@@ -1,4 +1,4 @@
 var searchData=
 [
-  ['cprojecttemplate_7',['CProjectTemplate',['../index.html',1,'']]]
+  ['intersecting_20triangles_7',['Intersecting Triangles',['../index.html',1,'']]]
 ];

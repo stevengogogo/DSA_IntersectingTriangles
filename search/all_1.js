@@ -1,4 +1,4 @@
 var searchData=
 [
-  ['extm_1',['extm',['../structextm.html',1,'']]]
+  ['intersecting_20triangles_1',['Intersecting Triangles',['../index.html',1,'']]]
 ];
