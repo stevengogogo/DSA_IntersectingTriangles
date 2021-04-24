@@ -2,10 +2,8 @@
 #define INTERSECT_H
 
 #include "utils.h"
-#include "generator.h"
 
 
-int interface(void);
-int sample_interface(void);
+int get_intersects(int n, int* p, int* q, int* r);
 
 #endif
