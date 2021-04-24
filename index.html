@@ -82,7 +82,12 @@ Strategy</h1>
 <div class="line">        cnt += r-mid</div>
 <div class="line"> </div>
 <div class="line">    <span class="keywordflow">return</span> cnt</div>
-</div><!-- fragment --><h1><a class="anchor" id="autotoc_md2"></a>
+</div><!-- fragment --><ol type="1">
+<li>Convert <code>Q</code>, and <code>R</code> to <code>max</code> and <code>min</code></li>
+<li>Sort <code>P</code> along with <code>max</code>, <code>min</code></li>
+<li>Sort <code>max</code> and <code>min</code> at the same time with sorted P</li>
+</ol>
+<h1><a class="anchor" id="autotoc_md2"></a>
 How to know two triangles have intersection(s)?</h1>
 <p>Let points on two distinct triangles be <code>(P,Q,R)</code> and &lsquo;(P&rsquo;,Q',R')`.</p>
 <ul>
@@ -124,9 +129,99 @@ Hints</h1>
 </li>
 <li>計算逆序數對 <img src="img/code_inversion.png" alt="" class="inline"/></li>
 </ul>
-<p><b>Ref</b>: <a href="https://www.csie.ntu.edu.tw/~sprout/algo2016/ppt_pdf/divide_and_conquer.pdf">https://www.csie.ntu.edu.tw/~sprout/algo2016/ppt_pdf/divide_and_conquer.pdf</a></p>
+<p><b>Ref</b>:</p><ul>
+<li><a href="https://www.csie.ntu.edu.tw/~sprout/algo2016/ppt_pdf/divide_and_conquer.pdf">https://www.csie.ntu.edu.tw/~sprout/algo2016/ppt_pdf/divide_and_conquer.pdf</a></li>
+<li><a href="https://medium.com/@ssbothwell/counting-inversions-with-merge-sort-4d9910dc95f0">https://medium.com/@ssbothwell/counting-inversions-with-merge-sort-4d9910dc95f0</a></li>
+</ul>
 <h2><a class="anchor" id="autotoc_md7"></a>
 Merge sort</h2>
+<div class="fragment"><div class="line"><span class="preprocessor">#include &lt;stdio.h&gt;</span></div>
+<div class="line"><span class="preprocessor">#include &lt;stdlib.h&gt;</span></div>
+<div class="line"> </div>
+<div class="line"> </div>
+<div class="line"><span class="comment">// Merge two subarrays of A[].</span></div>
+<div class="line"><span class="comment">// First subarray is arr[head..mid]</span></div>
+<div class="line"><span class="comment">// Second subarray is arr[mid+1..tail]</span></div>
+<div class="line"><span class="keywordtype">void</span> merge(<span class="keywordtype">int</span> arr[], <span class="keywordtype">int</span> head, <span class="keywordtype">int</span> mid, <span class="keywordtype">int</span> tail){</div>
+<div class="line">  <span class="keywordtype">int</span> lenA = mid - head + 1;</div>
+<div class="line">  <span class="keywordtype">int</span> lenB = tail - (mid + 1) + 1;</div>
+<div class="line">  <span class="keywordtype">int</span> A[lenA];</div>
+<div class="line">  <span class="keywordtype">int</span> B[lenB];</div>
+<div class="line"> </div>
+<div class="line">  <span class="comment">//Copy data to temp arrays A[] and B[]</span></div>
+<div class="line">  <span class="keywordtype">int</span> i, j, k;</div>
+<div class="line">  <span class="keywordflow">for</span>(i = 0; i &lt; lenA; i++){</div>
+<div class="line">    A[i] = arr[head + i];</div>
+<div class="line">  }</div>
+<div class="line">  <span class="keywordflow">for</span>(j = 0; j &lt; lenB; j++){</div>
+<div class="line">    B[j] = arr[mid + 1 + j];</div>
+<div class="line">  }</div>
+<div class="line"> </div>
+<div class="line">  <span class="comment">// Merge two temp arrays back into arr[head..tail]</span></div>
+<div class="line">  i = 0;</div>
+<div class="line">  j = 0;</div>
+<div class="line">  k = head;</div>
+<div class="line">  <span class="comment">//while array A and B haven&#39;t finished scanning</span></div>
+<div class="line">  <span class="keywordflow">while</span>(i &lt; lenA &amp;&amp; j &lt; lenB){</div>
+<div class="line">    <span class="keywordflow">if</span>(A[i] &lt; B[j]){</div>
+<div class="line">      arr[k] = A[i];</div>
+<div class="line">      i++;</div>
+<div class="line">    }</div>
+<div class="line">    <span class="keywordflow">else</span>{</div>
+<div class="line">      arr[k] = B[j];</div>
+<div class="line">      j++;</div>
+<div class="line">    }</div>
+<div class="line">    k++;</div>
+<div class="line">  }</div>
+<div class="line"> </div>
+<div class="line">  <span class="comment">//Copy the remaing elements into arr[], if A[] haven&#39;t finished scanning</span></div>
+<div class="line">  <span class="keywordflow">while</span>(i &lt; lenA){</div>
+<div class="line">    arr[k] = A[i];</div>
+<div class="line">    i++;</div>
+<div class="line">    k++;</div>
+<div class="line">  }</div>
+<div class="line">  <span class="comment">//Copy the remaing elements into arr[], if B[] haven&#39;t finished scanning</span></div>
+<div class="line">  <span class="keywordflow">while</span>(j &lt; lenB){</div>
+<div class="line">    arr[k] = B[j];</div>
+<div class="line">    j++;</div>
+<div class="line">    k++;</div>
+<div class="line">  }</div>
+<div class="line">}</div>
+<div class="line"> </div>
+<div class="line"><span class="keywordtype">void</span> merge_sort(<span class="keywordtype">int</span> arr[], <span class="keywordtype">int</span> head, <span class="keywordtype">int</span> tail){</div>
+<div class="line">  <span class="keywordflow">if</span>(head &lt; tail){</div>
+<div class="line">    <span class="keywordtype">int</span> mid = (head + tail) / 2;</div>
+<div class="line">    merge_sort(arr, head, mid);</div>
+<div class="line">    merge_sort(arr, mid+1, tail);</div>
+<div class="line">    merge(arr, head, mid, tail);</div>
+<div class="line">  }</div>
+<div class="line">}</div>
+<div class="line"> </div>
+<div class="line"> </div>
+<div class="line"><span class="keywordtype">int</span> main(){</div>
+<div class="line">  <span class="keywordtype">int</span> count, i;</div>
+<div class="line">  scanf(<span class="stringliteral">&quot;%d&quot;</span>, &amp;count);</div>
+<div class="line"> </div>
+<div class="line">  <span class="keywordtype">int</span> list[count];</div>
+<div class="line">  printf(<span class="stringliteral">&quot;Numbers to be sorted: &quot;</span>);</div>
+<div class="line">  <span class="keywordflow">for</span>(i = 0; i&lt;count; i++){</div>
+<div class="line">    scanf(<span class="stringliteral">&quot;%d&quot;</span>, &amp;list[i]);</div>
+<div class="line">    printf(<span class="stringliteral">&quot;%d &quot;</span>, list[i]);</div>
+<div class="line">  }</div>
+<div class="line">  printf(<span class="stringliteral">&quot;\n&quot;</span>);</div>
+<div class="line"> </div>
+<div class="line">  merge_sort(list, 0, count-1);</div>
+<div class="line"> </div>
+<div class="line">  printf(<span class="stringliteral">&quot;Numbers Sorted: &quot;</span>);</div>
+<div class="line">  <span class="keywordflow">for</span>(i = 0; i&lt;count; i++){</div>
+<div class="line">    printf(<span class="stringliteral">&quot;%d &quot;</span>, list[i]);</div>
+<div class="line">  }</div>
+<div class="line"> </div>
+<div class="line">  <span class="keywordflow">return</span> 0;</div>
+<div class="line">}</div>
+</div><!-- fragment --><p><b>Ref</b>:</p><ul>
+<li><a href="https://kopu.chat/2017/08/10/%E5%90%88%E4%BD%B5%E6%8E%92%E5%BA%8F-merge-sort/">https://kopu.chat/2017/08/10/%E5%90%88%E4%BD%B5%E6%8E%92%E5%BA%8F-merge-sort/</a></li>
+</ul>
 <h1><a class="anchor" id="autotoc_md8"></a>
 Draft</h1>
 <p><img src="img/note_20210423.jpeg" alt="" class="inline"/> </p>
