@@ -4,8 +4,10 @@ Paths init_paths(int len){
     int np = 3; // number of points
     int* arr[np];
 
-    for(int i=0;i<np;i++)
+    for(int i=0;i<np;i++){
         arr[i] = (int*)malloc(len*sizeof(int));
+        assert(arr[i] != NULL); // Check memory is set
+    }
 
     Paths pt = {
         .p = arr[0],

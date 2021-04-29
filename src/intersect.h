@@ -3,6 +3,7 @@
 
 #include "utils.h"
 #include "stdlib.h"
+#include "assert.h"
 
 typedef struct {
   int* p;
@@ -11,8 +12,7 @@ typedef struct {
   int len;
 } Paths;
 
-Paths init_paths(int len);
-void kill_paths(Paths);
+
 
 /**
  * @brief Get the intersects object
