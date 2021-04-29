@@ -223,6 +223,40 @@ Merge sort</h2>
 <li><a href="https://kopu.chat/2017/08/10/%E5%90%88%E4%BD%B5%E6%8E%92%E5%BA%8F-merge-sort/">https://kopu.chat/2017/08/10/%E5%90%88%E4%BD%B5%E6%8E%92%E5%BA%8F-merge-sort/</a></li>
 </ul>
 <h1><a class="anchor" id="autotoc_md8"></a>
+Merge sort in CLRS</h1>
+<h2><a class="anchor" id="autotoc_md9"></a>
+Merge Sort</h2>
+<div class="fragment"><div class="line">MERGE_SORT(A,p,r)</div>
+<div class="line">  <span class="keywordflow">if</span> p&lt;r</div>
+<div class="line">    q = round( (p+r)/2 )</div>
+<div class="line">    MERGE-SORT(A,p,q)</div>
+<div class="line">    MERGE-SORT(A,q+1, r)</div>
+<div class="line">    MERGE(A,p,q,r)</div>
+</div><!-- fragment --><h2><a class="anchor" id="autotoc_md10"></a>
+Merge</h2>
+<div class="fragment"><div class="line">MERGE(A,p,q,r)</div>
+<div class="line">  n1 = q - p + 1 <span class="comment">// length of sub-array 1 [str, end]</span></div>
+<div class="line">  n2 = r - q <span class="comment">// (str, end]</span></div>
+<div class="line">  let L[1..n1+1] and R[1..n2+1] be <span class="keyword">new</span> arrays</div>
+<div class="line">  <span class="keywordflow">for</span> i = 1 to n1</div>
+<div class="line">    L[i] = A[p+i-1]</div>
+<div class="line"> </div>
+<div class="line">  <span class="keywordflow">for</span> j = 1 to n2</div>
+<div class="line">    R[j] = A[q+j]</div>
+<div class="line"> </div>
+<div class="line">  L[n1+1] = inf</div>
+<div class="line">  R[n2+1] = inf</div>
+<div class="line"> </div>
+<div class="line">  i = 1</div>
+<div class="line">  j = 1</div>
+<div class="line">  <span class="keywordflow">for</span> k = p to r</div>
+<div class="line">    <span class="keywordflow">if</span> L[i] &lt;= R[j]</div>
+<div class="line">      A[k] = L[i]</div>
+<div class="line">      i = i+1</div>
+<div class="line">    <span class="keywordflow">else</span> </div>
+<div class="line">      A[k] = R[j]</div>
+<div class="line">      j = j + 1 </div>
+</div><!-- fragment --><h1><a class="anchor" id="autotoc_md11"></a>
 Draft</h1>
 <p><img src="img/note_20210423.jpeg" alt="" class="inline"/> </p>
 </div></div><!-- PageDoc -->
