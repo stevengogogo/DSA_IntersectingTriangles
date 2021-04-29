@@ -2,6 +2,17 @@
 #define INTERSECT_H
 
 #include "utils.h"
+#include "stdlib.h"
+
+typedef struct {
+  int* p;
+  int* l;
+  int* r;
+  int len;
+} Paths;
+
+Paths init_paths(int len);
+void kill_paths(Paths);
 
 /**
  * @brief Get the intersects object
