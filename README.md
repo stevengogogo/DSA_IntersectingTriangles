@@ -208,3 +208,12 @@ MERGE(A,p,q,r)
 ## Draft
 
 ![](img/note_20210423.jpeg)
+
+
+---
+
+## Returning array in C
+
+![](https://static.javatpoint.com/cpages/images/return-an-array-in-c4.png)
+
+Ref: https://www.javatpoint.com/return-an-array-in-c

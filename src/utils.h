@@ -20,4 +20,9 @@ void kill_arr(int*);
 /** Noted that `right` is not included*/
 void copy_arr(int* dst, int* src, int left, int right);
 
+/** Return index of max element*/
+int argmax(int n0, int n1);
+
+void swap(int* a, int *b);
+
 #endif

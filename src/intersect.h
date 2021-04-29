@@ -12,7 +12,8 @@ typedef struct {
   int len;
 } Paths;
 
-
+/** Create path struct. where 'r' is max(q,r) / 'l' is the other*/
+Paths init_path(int len, int p[], int q[], int r[]);
 
 /**
  * @brief Get the intersects object

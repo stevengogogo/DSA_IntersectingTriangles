@@ -15,3 +15,16 @@ void copy_arr(int* dst, int* src, int left, int right){
         dst[i] = src[i];
     }
 }
+
+int argmax(int n0, int n1){
+    if (n1>n0)
+        return n1;
+    else 
+        return n0;
+}
+
+void swap(int* a, int *b){
+    int tmp = *a;
+    *a = *b;
+    *b = tmp;
+}
