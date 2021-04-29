@@ -1,4 +1,4 @@
 var searchData=
 [
-  ['paths_2',['Paths',['../structPaths.html',1,'']]]
+  ['intersecting_20triangles_2',['Intersecting Triangles',['../index.html',1,'']]]
 ];

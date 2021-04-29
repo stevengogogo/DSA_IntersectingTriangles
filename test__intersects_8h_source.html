@@ -71,23 +71,30 @@ $(function() {
 <div class="contents">
 <div class="fragment"><div class="line"><a name="l00001"></a><span class="lineno">    1</span>&#160;<span class="preprocessor">#include &quot;intersect.h&quot;</span></div>
 <div class="line"><a name="l00002"></a><span class="lineno">    2</span>&#160;<span class="preprocessor">#include &quot;generator.h&quot;</span></div>
-<div class="line"><a name="l00003"></a><span class="lineno">    3</span>&#160; </div>
+<div class="line"><a name="l00003"></a><span class="lineno">    3</span>&#160;<span class="preprocessor">#include &quot;util.h&quot;</span></div>
 <div class="line"><a name="l00004"></a><span class="lineno">    4</span>&#160; </div>
 <div class="line"><a name="l00005"></a><span class="lineno">    5</span>&#160; </div>
-<div class="line"><a name="l00006"></a><span class="lineno">    6</span>&#160;<span class="keywordtype">void</span> load_data(<span class="keywordtype">void</span>){</div>
-<div class="line"><a name="l00007"></a><span class="lineno">    7</span>&#160;    <a class="code" href="structPaths.html">Paths</a> pt;</div>
-<div class="line"><a name="l00008"></a><span class="lineno">    8</span>&#160; </div>
-<div class="line"><a name="l00009"></a><span class="lineno">    9</span>&#160;    <span class="keywordtype">int</span> n = 10;</div>
-<div class="line"><a name="l00010"></a><span class="lineno">   10</span>&#160;    <span class="keywordtype">int</span> p[] = {-5, 15, 15, -8, -11, -5, -13, -14, 15, 10};</div>
-<div class="line"><a name="l00011"></a><span class="lineno">   11</span>&#160;    <span class="keywordtype">int</span> q[] = {-7, -12, -4, -13, 5, 1, 14, -16, -16, -14};</div>
-<div class="line"><a name="l00012"></a><span class="lineno">   12</span>&#160;    <span class="keywordtype">int</span> r[] = {2, -13, 1, 9, 9, 1, 1, 12, -15, 6};</div>
-<div class="line"><a name="l00013"></a><span class="lineno">   13</span>&#160;    </div>
-<div class="line"><a name="l00014"></a><span class="lineno">   14</span>&#160;    pt.len = n;</div>
-<div class="line"><a name="l00015"></a><span class="lineno">   15</span>&#160;    pt.p = p;</div>
-<div class="line"><a name="l00016"></a><span class="lineno">   16</span>&#160;    pt.l = q;</div>
-<div class="line"><a name="l00017"></a><span class="lineno">   17</span>&#160;    pt.r = r;</div>
-<div class="line"><a name="l00018"></a><span class="lineno">   18</span>&#160;}</div>
+<div class="line"><a name="l00006"></a><span class="lineno">    6</span>&#160; </div>
+<div class="line"><a name="l00007"></a><span class="lineno">    7</span>&#160;<span class="keywordtype">void</span> load_data(<span class="keywordtype">void</span>){</div>
+<div class="line"><a name="l00008"></a><span class="lineno">    8</span>&#160;    <span class="keywordtype">int</span> n = 10;</div>
+<div class="line"><a name="l00009"></a><span class="lineno">    9</span>&#160;    <span class="keywordtype">int</span> p[] = {-5, 15, 15, -8, -11, -5, -13, -14, 15, 10};</div>
+<div class="line"><a name="l00010"></a><span class="lineno">   10</span>&#160;    <span class="keywordtype">int</span> q[] = {-7, -12, -4, -13, 5, 1, 14, -16, -16, -14};</div>
+<div class="line"><a name="l00011"></a><span class="lineno">   11</span>&#160;    <span class="keywordtype">int</span> r[] = {2, -13, 1, 9, 9, 1, 1, 12, -15, 6};</div>
+<div class="line"><a name="l00012"></a><span class="lineno">   12</span>&#160;    </div>
+<div class="line"><a name="l00013"></a><span class="lineno">   13</span>&#160;    <a class="code" href="structPaths.html">Paths</a> pt = init_path(n,p,q,r);</div>
+<div class="line"><a name="l00014"></a><span class="lineno">   14</span>&#160;    <span class="keywordtype">int</span> qr[2];</div>
+<div class="line"><a name="l00015"></a><span class="lineno">   15</span>&#160;    <span class="keywordflow">for</span>(<span class="keywordtype">int</span> i=0; i&lt;n;i++){</div>
+<div class="line"><a name="l00016"></a><span class="lineno">   16</span>&#160;        qr[0] = q[i];</div>
+<div class="line"><a name="l00017"></a><span class="lineno">   17</span>&#160;        qr[1] = r[i];</div>
+<div class="line"><a name="l00018"></a><span class="lineno">   18</span>&#160;        <span class="keywordtype">int</span> am = <a class="code" href="utils_8h.html#a75680e51ae71d620ae36f340cbc0a73c">argmax</a>(q[i], r[i]);</div>
+<div class="line"><a name="l00019"></a><span class="lineno">   19</span>&#160; </div>
+<div class="line"><a name="l00020"></a><span class="lineno">   20</span>&#160;        TEST_CHECK(pt.p[i] == p[i]);</div>
+<div class="line"><a name="l00021"></a><span class="lineno">   21</span>&#160;        TEST_CHECK(pt.r[i] == qr[am]);</div>
+<div class="line"><a name="l00022"></a><span class="lineno">   22</span>&#160;        TEST_CHECK(pt.l[i] == qr[1^am]);</div>
+<div class="line"><a name="l00023"></a><span class="lineno">   23</span>&#160;    }</div>
+<div class="line"><a name="l00024"></a><span class="lineno">   24</span>&#160;}</div>
 <div class="ttc" id="astructPaths_html"><div class="ttname"><a href="structPaths.html">Paths</a></div><div class="ttdef"><b>Definition:</b> intersect.h:8</div></div>
+<div class="ttc" id="autils_8h_html_a75680e51ae71d620ae36f340cbc0a73c"><div class="ttname"><a href="utils_8h.html#a75680e51ae71d620ae36f340cbc0a73c">argmax</a></div><div class="ttdeci">int argmax(int n0, int n1)</div><div class="ttdef"><b>Definition:</b> utils.c:19</div></div>
 </div><!-- fragment --></div><!-- contents -->
 <!-- start footer part -->
 <hr class="footer"/><address class="footer"><small>
