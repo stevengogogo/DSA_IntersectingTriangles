@@ -4,6 +4,7 @@
 
 #include <stdlib.h>
 #include <assert.h>
+#include <limits.h> // INT_MAX
 #include "utils.h"
 
 typedef struct {
@@ -19,6 +20,22 @@ typedef struct {
 Paths init_path(int len, int p[], int q[], int r[]);
 /** Free arrays of the Struct @ref Paths */
 void kill_path(Paths);
+
+
+/** Merge Sort first array along with 3 arrays. Increasing order
+ * @param A array to be sorted
+ * @param a2 paired array of `A`
+ * @param a3 paired array of `A`
+ * @param p left start index
+ * @param r right start index
+ * @note Ref: Chapter 4. CLRS
+ */
+void MERGE_SORT_FIRSTofThree(int* A, int* a2, int* a3, int p, int r);
+/** Merge process of @ref MERGE_SORT_FIRSTofThree */
+void MERGE_FIRSTofThree(int* A, int* a2, int* a3, int p, int q, int r);
+
+/** Sort ps in paths. Paths.l and Path.r will keep paired with Paths.p*/
+void sortPaths_P(Paths);
 
 /**
  * @brief Get the intersects object
