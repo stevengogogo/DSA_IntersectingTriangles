@@ -101,9 +101,96 @@ void sortPaths_P(Paths pt){
     MERGE_SORT_FIRSTofThree(pt.p, pt.l, pt.r, 0, pt.len-1);
 }
 
-int get_intersects(int n, int* p, int* q, int* r){
+int MERGE_SORT_COUNT_INVERSION(int* Ps, int* Ls, int* Rs,int l, int r){
+    int inv=0;
+    if (l<r){
+        int m = (l+r)/2;
+        inv += MERGE_SORT_COUNT_INVERSION(Ps, Ls, Rs, l, m);
+        inv += MERGE_SORT_COUNT_INVERSION(Ps, Ls, Rs, m+1, r);
+        inv += MERGE_COUNT_INVERSION(Ps, Ls, Rs, l, m, r);
+    }
+    return inv;
+}
+
+int MERGE_COUNT_INVERSION(int* Ps, int* Ls, int* Rs, int l, int m, int r){
+    int n1 = m - l + 1;
+    int n2 = r - (l+1) + 1;
+
+    // Sort Array
+    int* Ls_L = (int*)malloc(n1*sizeof(int) + 1);
+    int* Ls_R = (int*)malloc(n2*sizeof(int) + 1);
+    int* Rs_L = (int*)malloc(n1*sizeof(int) + 1);
+    int* Rs_R = (int*)malloc(n2*sizeof(int) + 1);   
+
+    //Copy left part
+    copy_arr(Ls_L, Ls, l, m+1);
+    copy_arr(Rs_L, Rs, l, m+1);
+    //Copy right part
+    copy_arr(Ls_R, Ls, m+1, r+1);
+    copy_arr(Rs_R, Rs, m+1, r+1);
+
+    //Sentinel 
+    Ls_L[n1] = INT_MAX;
+    Rs_L[n1] = INT_MAX;
+    Ls_R[n2] = INT_MAX;
+    Rs_R[n2] = INT_MAX;
+
+    int Li = 0;
+    int Lj = 0;
+    int Ri = 0;
+    int Rj = 0;
+
+    //Sort Ls and Rs
+    for (int k=l;k<=r;k++){
+        //Dispatch Ls
+        if(Ls_L[Li] <= Ls_R[Lj]){
+            Ls[k] = Ls_L[Li];
+            ++Li;
+        }
+        else{
+            Ls[k] = Ls_R[Lj];
+            ++Lj;
+        }
+
+        //Dispatch Rs
+        if(Rs_L[Ri] <= Rs_R[Rj]){
+            Rs[k] = Rs_L[Ri];
+            ++Ri;
+        }
+        else{
+            Rs[k] = Rs_R[Rj];
+            ++Rj;
+        }
+    }
+
+    //Count inversion
+    int count = l;
+    int inv = 0;
+    for (int k=l;k<=r;k++){
+        while(count <= r && Ls[k] >= Rs[count]){
+            ++count;
+        }
+
+        inv = inv + count-l + 1;
+    }
     
-    return q[0];
+    
+    //Free
+    free(Ls_L);
+    free(Ls_R);
+    free(Rs_L);
+    free(Rs_R);
+
+    return inv;
+}
+
+
+int get_intersects(int n, int* p, int* q, int* r){
+    Paths pt = init_path(n,p,q,r);
+    sortPaths_P(pt);
+    int inv = MERGE_SORT_COUNT_INVERSION(pt.p, pt.l, pt.r, 0, pt.len-1);
+    kill_path(pt);
+    return inv;
 }
 
 

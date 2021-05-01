@@ -32,7 +32,7 @@ Paths init_path(int len, int p[], int q[], int r[]);
 void kill_path(Paths);
 
 
-/** Merge Sort first array along with 3 arrays. Increasing order
+/** @brief Merge Sort first array along with 3 arrays. Increasing order
  * @param A array to be sorted
  * @param a2 paired array of `A`
  * @param a3 paired array of `A`
@@ -45,8 +45,15 @@ void MERGE_SORT_FIRSTofThree(int* A, int* a2, int* a3, int p, int r);
 void MERGE_FIRSTofThree(int* A, int* a2, int* a3, int p, int q, int r);
 
 /** Merge sort and total count inversions
+ * @param Ps monotonous increasing 
+ * @param Ls Min Array to be sorted
+ * @param Rs Max Array to be sorted
  * @note Definition of inversions:
- * 
+ * 1. Ls[i] >= Rs[j] when Ps[i] < Ps[j]. i!=j
+ * 2. Ps[i] == Ps[j]. i!= j
+ * Ref: 
+ * 1. https://www.csie.ntu.edu.tw/~sprout/algo2016/ppt_pdf/divide_and_conquer.pdf
+ * 2. https://www.geeksforgeeks.org/counting-inversions/
 */
 int MERGE_SORT_COUNT_INVERSION(int* Ps, int* Ls, int* Rs,int l, int r);
 int MERGE_COUNT_INVERSION(int* Ps, int* Ls, int* Rs, int l, int q, int r);
