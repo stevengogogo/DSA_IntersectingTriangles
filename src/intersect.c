@@ -167,11 +167,11 @@ int MERGE_COUNT_INVERSION(int* Ps, int* Ls, int* Rs, int l, int m, int r){
     int count = l;
     int inv = 0;
     for (int k=l;k<=r;k++){
-        while(count <= r && Ls[k] >= Rs[count]){
+        while(count < r && Ls[k] >= Rs[count]){
             ++count;
         }
 
-        inv = inv + count-l + 1;
+        inv = inv + count - l;
     }
     
     
