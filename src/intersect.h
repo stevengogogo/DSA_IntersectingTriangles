@@ -12,8 +12,12 @@ typedef struct {
   int len;
 } Paths;
 
-/** Create path struct. where 'r' is max(q,r) / 'l' is the other*/
+/** Create path struct. where 'r' is max(q,r) / 'l' is the other. 
+ * @note Arrays are copied and saved in heap. Use @ref kill_path to recycle the memory
+*/
 Paths init_path(int len, int p[], int q[], int r[]);
+/** Free arrays of the Struct @ref Paths */
+void kill_path(Paths);
 
 /**
  * @brief Get the intersects object
