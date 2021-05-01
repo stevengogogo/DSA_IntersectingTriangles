@@ -26,6 +26,7 @@ void load_data(void){
         }
     }
 
+    MERGE_SORT_FIRSTofThree(pt.p, pt.l, pt.r, 0, pt.len-1);
     //Kill
     kill_path(pt);
 }

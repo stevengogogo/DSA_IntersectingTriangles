@@ -11,8 +11,10 @@ void kill_arr(int* array){
 }
 
 void copy_arr(int* dst, int* src, int left, int right){
+    int j = 0;
     for(int i=left; i<right;i++){
-        dst[i] = src[i];
+        dst[j] = src[i];
+        ++j;
     }
 }
 
