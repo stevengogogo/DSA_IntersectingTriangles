@@ -69,37 +69,48 @@ $(function() {
 <div class="title">intersect.h</div>  </div>
 </div><!--header-->
 <div class="contents">
-<div class="fragment"><div class="line"><a name="l00001"></a><span class="lineno">    1</span>&#160;<span class="preprocessor">#ifndef INTERSECT_H</span></div>
-<div class="line"><a name="l00002"></a><span class="lineno">    2</span>&#160;<span class="preprocessor">#define INTERSECT_H</span></div>
-<div class="line"><a name="l00003"></a><span class="lineno">    3</span>&#160; </div>
-<div class="line"><a name="l00004"></a><span class="lineno">    4</span>&#160; </div>
-<div class="line"><a name="l00005"></a><span class="lineno">    5</span>&#160;<span class="preprocessor">#include &lt;stdlib.h&gt;</span></div>
-<div class="line"><a name="l00006"></a><span class="lineno">    6</span>&#160;<span class="preprocessor">#include &lt;assert.h&gt;</span></div>
-<div class="line"><a name="l00007"></a><span class="lineno">    7</span>&#160;<span class="preprocessor">#include &lt;limits.h&gt;</span> <span class="comment">// INT_MAX</span></div>
-<div class="line"><a name="l00008"></a><span class="lineno">    8</span>&#160;<span class="preprocessor">#include &quot;<a class="code" href="utils_8h.html">utils.h</a>&quot;</span></div>
-<div class="line"><a name="l00009"></a><span class="lineno">    9</span>&#160; </div>
-<div class="line"><a name="l00010"></a><span class="lineno"><a class="line" href="structPaths.html">   10</a></span>&#160;<span class="keyword">typedef</span> <span class="keyword">struct </span>{</div>
-<div class="line"><a name="l00011"></a><span class="lineno">   11</span>&#160;  <span class="keywordtype">int</span>* p;</div>
-<div class="line"><a name="l00012"></a><span class="lineno">   12</span>&#160;  <span class="keywordtype">int</span>* l;</div>
-<div class="line"><a name="l00013"></a><span class="lineno">   13</span>&#160;  <span class="keywordtype">int</span>* r;</div>
-<div class="line"><a name="l00014"></a><span class="lineno">   14</span>&#160;  <span class="keywordtype">int</span> len;</div>
-<div class="line"><a name="l00015"></a><span class="lineno">   15</span>&#160;} <a class="code" href="structPaths.html">Paths</a>;</div>
-<div class="line"><a name="l00016"></a><span class="lineno">   16</span>&#160; </div>
-<div class="line"><a name="l00020"></a><span class="lineno">   20</span>&#160;<a class="code" href="structPaths.html">Paths</a> init_path(<span class="keywordtype">int</span> len, <span class="keywordtype">int</span> p[], <span class="keywordtype">int</span> q[], <span class="keywordtype">int</span> r[]);</div>
-<div class="line"><a name="l00022"></a><span class="lineno">   22</span>&#160;<span class="keywordtype">void</span> kill_path(<a class="code" href="structPaths.html">Paths</a>);</div>
-<div class="line"><a name="l00023"></a><span class="lineno">   23</span>&#160; </div>
-<div class="line"><a name="l00024"></a><span class="lineno">   24</span>&#160; </div>
-<div class="line"><a name="l00033"></a><span class="lineno">   33</span>&#160;<span class="keywordtype">void</span> MERGE_SORT_FIRSTofThree(<span class="keywordtype">int</span>* A, <span class="keywordtype">int</span>* a2, <span class="keywordtype">int</span>* a3, <span class="keywordtype">int</span> p, <span class="keywordtype">int</span> r);</div>
-<div class="line"><a name="l00035"></a><span class="lineno">   35</span>&#160;<span class="keywordtype">void</span> MERGE_FIRSTofThree(<span class="keywordtype">int</span>* A, <span class="keywordtype">int</span>* a2, <span class="keywordtype">int</span>* a3, <span class="keywordtype">int</span> p, <span class="keywordtype">int</span> q, <span class="keywordtype">int</span> r);</div>
-<div class="line"><a name="l00036"></a><span class="lineno">   36</span>&#160; </div>
-<div class="line"><a name="l00038"></a><span class="lineno">   38</span>&#160;<span class="keywordtype">void</span> sortPaths_P(<a class="code" href="structPaths.html">Paths</a>);</div>
-<div class="line"><a name="l00039"></a><span class="lineno">   39</span>&#160; </div>
-<div class="line"><a name="l00049"></a><span class="lineno">   49</span>&#160;<span class="keywordtype">int</span> get_intersects(<span class="keywordtype">int</span> n, <span class="keywordtype">int</span>* p, <span class="keywordtype">int</span>* q, <span class="keywordtype">int</span>* r);</div>
-<div class="line"><a name="l00050"></a><span class="lineno">   50</span>&#160; </div>
-<div class="line"><a name="l00051"></a><span class="lineno">   51</span>&#160; </div>
-<div class="line"><a name="l00052"></a><span class="lineno">   52</span>&#160; </div>
-<div class="line"><a name="l00053"></a><span class="lineno">   53</span>&#160;<span class="preprocessor">#endif</span></div>
-<div class="ttc" id="astructPaths_html"><div class="ttname"><a href="structPaths.html">Paths</a></div><div class="ttdef"><b>Definition:</b> intersect.h:10</div></div>
+<a href="intersect_8h.html">Go to the documentation of this file.</a><div class="fragment"><div class="line"><a name="l00001"></a><span class="lineno">    1</span>&#160; </div>
+<div class="line"><a name="l00011"></a><span class="lineno">   11</span>&#160;<span class="preprocessor">#ifndef INTERSECT_H</span></div>
+<div class="line"><a name="l00012"></a><span class="lineno">   12</span>&#160;<span class="preprocessor">#define INTERSECT_H</span></div>
+<div class="line"><a name="l00013"></a><span class="lineno">   13</span>&#160; </div>
+<div class="line"><a name="l00014"></a><span class="lineno">   14</span>&#160; </div>
+<div class="line"><a name="l00015"></a><span class="lineno">   15</span>&#160;<span class="preprocessor">#include &lt;stdlib.h&gt;</span></div>
+<div class="line"><a name="l00016"></a><span class="lineno">   16</span>&#160;<span class="preprocessor">#include &lt;assert.h&gt;</span></div>
+<div class="line"><a name="l00017"></a><span class="lineno">   17</span>&#160;<span class="preprocessor">#include &lt;limits.h&gt;</span> <span class="comment">// INT_MAX</span></div>
+<div class="line"><a name="l00018"></a><span class="lineno">   18</span>&#160;<span class="preprocessor">#include &quot;<a class="code" href="utils_8h.html">utils.h</a>&quot;</span></div>
+<div class="line"><a name="l00019"></a><span class="lineno">   19</span>&#160; </div>
+<div class="line"><a name="l00020"></a><span class="lineno"><a class="line" href="structPaths.html">   20</a></span>&#160;<span class="keyword">typedef</span> <span class="keyword">struct </span>{</div>
+<div class="line"><a name="l00021"></a><span class="lineno">   21</span>&#160;  <span class="keywordtype">int</span>* p;</div>
+<div class="line"><a name="l00022"></a><span class="lineno">   22</span>&#160;  <span class="keywordtype">int</span>* l;</div>
+<div class="line"><a name="l00023"></a><span class="lineno">   23</span>&#160;  <span class="keywordtype">int</span>* r;</div>
+<div class="line"><a name="l00024"></a><span class="lineno">   24</span>&#160;  <span class="keywordtype">int</span> len;</div>
+<div class="line"><a name="l00025"></a><span class="lineno">   25</span>&#160;} <a class="code" href="structPaths.html">Paths</a>;</div>
+<div class="line"><a name="l00026"></a><span class="lineno">   26</span>&#160; </div>
+<div class="line"><a name="l00030"></a><span class="lineno">   30</span>&#160;<a class="code" href="structPaths.html">Paths</a> <a class="code" href="intersect_8h.html#a8825e952164dc385de3c4b5074821785">init_path</a>(<span class="keywordtype">int</span> len, <span class="keywordtype">int</span> p[], <span class="keywordtype">int</span> q[], <span class="keywordtype">int</span> r[]);</div>
+<div class="line"><a name="l00032"></a><span class="lineno">   32</span>&#160;<span class="keywordtype">void</span> <a class="code" href="intersect_8h.html#ac073207350efd314317ea290c18e830d">kill_path</a>(<a class="code" href="structPaths.html">Paths</a>);</div>
+<div class="line"><a name="l00033"></a><span class="lineno">   33</span>&#160; </div>
+<div class="line"><a name="l00034"></a><span class="lineno">   34</span>&#160; </div>
+<div class="line"><a name="l00043"></a><span class="lineno">   43</span>&#160;<span class="keywordtype">void</span> <a class="code" href="intersect_8h.html#a042d0437d8c9cdf4ac63c6f636269441">MERGE_SORT_FIRSTofThree</a>(<span class="keywordtype">int</span>* A, <span class="keywordtype">int</span>* a2, <span class="keywordtype">int</span>* a3, <span class="keywordtype">int</span> p, <span class="keywordtype">int</span> r);</div>
+<div class="line"><a name="l00045"></a><span class="lineno">   45</span>&#160;<span class="keywordtype">void</span> <a class="code" href="intersect_8h.html#a5c8fd40bb150eb9b965659743acc190f">MERGE_FIRSTofThree</a>(<span class="keywordtype">int</span>* A, <span class="keywordtype">int</span>* a2, <span class="keywordtype">int</span>* a3, <span class="keywordtype">int</span> p, <span class="keywordtype">int</span> q, <span class="keywordtype">int</span> r);</div>
+<div class="line"><a name="l00046"></a><span class="lineno">   46</span>&#160; </div>
+<div class="line"><a name="l00051"></a><span class="lineno"><a class="line" href="intersect_8h.html#a6a4b796340d899fe719b47eff3a93c9e">   51</a></span>&#160;<span class="keywordtype">int</span> <a class="code" href="intersect_8h.html#a6a4b796340d899fe719b47eff3a93c9e">MERGE_SORT_COUNT_INVERSION</a>(<span class="keywordtype">int</span>* Ps, <span class="keywordtype">int</span>* Ls, <span class="keywordtype">int</span>* Rs,<span class="keywordtype">int</span> l, <span class="keywordtype">int</span> r);</div>
+<div class="line"><a name="l00052"></a><span class="lineno">   52</span>&#160;<span class="keywordtype">int</span> MERGE_COUNT_INVERSION(<span class="keywordtype">int</span>* Ps, <span class="keywordtype">int</span>* Ls, <span class="keywordtype">int</span>* Rs, <span class="keywordtype">int</span> l, <span class="keywordtype">int</span> q, <span class="keywordtype">int</span> r);</div>
+<div class="line"><a name="l00053"></a><span class="lineno">   53</span>&#160; </div>
+<div class="line"><a name="l00055"></a><span class="lineno">   55</span>&#160;<span class="keywordtype">void</span> <a class="code" href="intersect_8h.html#a434c1a030b0e3acaf4df97cb2460eced">sortPaths_P</a>(<a class="code" href="structPaths.html">Paths</a>);</div>
+<div class="line"><a name="l00056"></a><span class="lineno">   56</span>&#160; </div>
+<div class="line"><a name="l00066"></a><span class="lineno">   66</span>&#160;<span class="keywordtype">int</span> <a class="code" href="intersect_8h.html#a623d9088bdc9d72513a391fbd120b8d2">get_intersects</a>(<span class="keywordtype">int</span> n, <span class="keywordtype">int</span>* p, <span class="keywordtype">int</span>* q, <span class="keywordtype">int</span>* r);</div>
+<div class="line"><a name="l00067"></a><span class="lineno">   67</span>&#160; </div>
+<div class="line"><a name="l00068"></a><span class="lineno">   68</span>&#160; </div>
+<div class="line"><a name="l00069"></a><span class="lineno">   69</span>&#160; </div>
+<div class="line"><a name="l00070"></a><span class="lineno">   70</span>&#160;<span class="preprocessor">#endif</span></div>
+<div class="ttc" id="aintersect_8h_html_a042d0437d8c9cdf4ac63c6f636269441"><div class="ttname"><a href="intersect_8h.html#a042d0437d8c9cdf4ac63c6f636269441">MERGE_SORT_FIRSTofThree</a></div><div class="ttdeci">void MERGE_SORT_FIRSTofThree(int *A, int *a2, int *a3, int p, int r)</div><div class="ttdef"><b>Definition:</b> intersect.c:36</div></div>
+<div class="ttc" id="aintersect_8h_html_a434c1a030b0e3acaf4df97cb2460eced"><div class="ttname"><a href="intersect_8h.html#a434c1a030b0e3acaf4df97cb2460eced">sortPaths_P</a></div><div class="ttdeci">void sortPaths_P(Paths)</div><div class="ttdef"><b>Definition:</b> intersect.c:100</div></div>
+<div class="ttc" id="aintersect_8h_html_a5c8fd40bb150eb9b965659743acc190f"><div class="ttname"><a href="intersect_8h.html#a5c8fd40bb150eb9b965659743acc190f">MERGE_FIRSTofThree</a></div><div class="ttdeci">void MERGE_FIRSTofThree(int *A, int *a2, int *a3, int p, int q, int r)</div><div class="ttdef"><b>Definition:</b> intersect.c:45</div></div>
+<div class="ttc" id="aintersect_8h_html_a623d9088bdc9d72513a391fbd120b8d2"><div class="ttname"><a href="intersect_8h.html#a623d9088bdc9d72513a391fbd120b8d2">get_intersects</a></div><div class="ttdeci">int get_intersects(int n, int *p, int *q, int *r)</div><div class="ttdoc">Get the intersects object.</div><div class="ttdef"><b>Definition:</b> intersect.c:104</div></div>
+<div class="ttc" id="aintersect_8h_html_a6a4b796340d899fe719b47eff3a93c9e"><div class="ttname"><a href="intersect_8h.html#a6a4b796340d899fe719b47eff3a93c9e">MERGE_SORT_COUNT_INVERSION</a></div><div class="ttdeci">int MERGE_SORT_COUNT_INVERSION(int *Ps, int *Ls, int *Rs, int l, int r)</div></div>
+<div class="ttc" id="aintersect_8h_html_a8825e952164dc385de3c4b5074821785"><div class="ttname"><a href="intersect_8h.html#a8825e952164dc385de3c4b5074821785">init_path</a></div><div class="ttdeci">Paths init_path(int len, int p[], int q[], int r[])</div><div class="ttdef"><b>Definition:</b> intersect.c:4</div></div>
+<div class="ttc" id="aintersect_8h_html_ac073207350efd314317ea290c18e830d"><div class="ttname"><a href="intersect_8h.html#ac073207350efd314317ea290c18e830d">kill_path</a></div><div class="ttdeci">void kill_path(Paths)</div><div class="ttdef"><b>Definition:</b> intersect.c:30</div></div>
+<div class="ttc" id="astructPaths_html"><div class="ttname"><a href="structPaths.html">Paths</a></div><div class="ttdef"><b>Definition:</b> intersect.h:20</div></div>
 <div class="ttc" id="autils_8h_html"><div class="ttname"><a href="utils_8h.html">utils.h</a></div><div class="ttdoc">General Utilities.</div></div>
 </div><!-- fragment --></div><!-- contents -->
 <!-- start footer part -->

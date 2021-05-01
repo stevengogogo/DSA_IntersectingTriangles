@@ -69,8 +69,8 @@ $(function() {
 <div class="title">test_intersects.h</div>  </div>
 </div><!--header-->
 <div class="contents">
-<div class="fragment"><div class="line"><a name="l00001"></a><span class="lineno">    1</span>&#160;<span class="preprocessor">#include &quot;intersect.h&quot;</span></div>
-<div class="line"><a name="l00002"></a><span class="lineno">    2</span>&#160;<span class="preprocessor">#include &quot;generator.h&quot;</span></div>
+<div class="fragment"><div class="line"><a name="l00001"></a><span class="lineno">    1</span>&#160;<span class="preprocessor">#include &quot;<a class="code" href="intersect_8h.html">intersect.h</a>&quot;</span></div>
+<div class="line"><a name="l00002"></a><span class="lineno">    2</span>&#160;<span class="preprocessor">#include &quot;<a class="code" href="generator_8h.html">generator.h</a>&quot;</span></div>
 <div class="line"><a name="l00003"></a><span class="lineno">    3</span>&#160;<span class="preprocessor">#include &quot;<a class="code" href="utils_8h.html">utils.h</a>&quot;</span></div>
 <div class="line"><a name="l00004"></a><span class="lineno">    4</span>&#160; </div>
 <div class="line"><a name="l00005"></a><span class="lineno">    5</span>&#160; </div>
@@ -82,7 +82,7 @@ $(function() {
 <div class="line"><a name="l00011"></a><span class="lineno">   11</span>&#160;    <span class="keywordtype">int</span> r[] = {2, -13, 1, 9, 9, 1, 1, 12, -15, 6};</div>
 <div class="line"><a name="l00012"></a><span class="lineno">   12</span>&#160;    </div>
 <div class="line"><a name="l00013"></a><span class="lineno">   13</span>&#160;    <span class="comment">//Initiate</span></div>
-<div class="line"><a name="l00014"></a><span class="lineno">   14</span>&#160;    <a class="code" href="structPaths.html">Paths</a> pt = init_path(n,p,q,r);</div>
+<div class="line"><a name="l00014"></a><span class="lineno">   14</span>&#160;    <a class="code" href="structPaths.html">Paths</a> pt = <a class="code" href="intersect_8h.html#a8825e952164dc385de3c4b5074821785">init_path</a>(n,p,q,r);</div>
 <div class="line"><a name="l00015"></a><span class="lineno">   15</span>&#160;    </div>
 <div class="line"><a name="l00016"></a><span class="lineno">   16</span>&#160;    <span class="keywordflow">for</span>(<span class="keywordtype">int</span> i=0; i&lt;n;i++){</div>
 <div class="line"><a name="l00017"></a><span class="lineno">   17</span>&#160;        TEST_CHECK(pt.p[i] == p[i]);</div>
@@ -97,7 +97,7 @@ $(function() {
 <div class="line"><a name="l00026"></a><span class="lineno">   26</span>&#160;        }</div>
 <div class="line"><a name="l00027"></a><span class="lineno">   27</span>&#160;    }</div>
 <div class="line"><a name="l00028"></a><span class="lineno">   28</span>&#160; </div>
-<div class="line"><a name="l00029"></a><span class="lineno">   29</span>&#160;    sortPaths_P(pt);</div>
+<div class="line"><a name="l00029"></a><span class="lineno">   29</span>&#160;    <a class="code" href="intersect_8h.html#a434c1a030b0e3acaf4df97cb2460eced">sortPaths_P</a>(pt);</div>
 <div class="line"><a name="l00030"></a><span class="lineno">   30</span>&#160; </div>
 <div class="line"><a name="l00031"></a><span class="lineno">   31</span>&#160;    TEST_CHECK(pt.p[0] == -14);</div>
 <div class="line"><a name="l00032"></a><span class="lineno">   32</span>&#160;    TEST_CHECK(pt.l[0] == -16);</div>
@@ -113,9 +113,14 @@ $(function() {
 <div class="line"><a name="l00042"></a><span class="lineno">   42</span>&#160;    TEST_CHECK(pt.r[4] == 2);</div>
 <div class="line"><a name="l00043"></a><span class="lineno">   43</span>&#160; </div>
 <div class="line"><a name="l00044"></a><span class="lineno">   44</span>&#160;    <span class="comment">//Kill</span></div>
-<div class="line"><a name="l00045"></a><span class="lineno">   45</span>&#160;    kill_path(pt);</div>
+<div class="line"><a name="l00045"></a><span class="lineno">   45</span>&#160;    <a class="code" href="intersect_8h.html#ac073207350efd314317ea290c18e830d">kill_path</a>(pt);</div>
 <div class="line"><a name="l00046"></a><span class="lineno">   46</span>&#160;}</div>
-<div class="ttc" id="astructPaths_html"><div class="ttname"><a href="structPaths.html">Paths</a></div><div class="ttdef"><b>Definition:</b> intersect.h:10</div></div>
+<div class="ttc" id="agenerator_8h_html"><div class="ttname"><a href="generator_8h.html">generator.h</a></div><div class="ttdoc">Random generator for triangle coordinations.</div></div>
+<div class="ttc" id="aintersect_8h_html"><div class="ttname"><a href="intersect_8h.html">intersect.h</a></div><div class="ttdoc">Calculating inversions.</div></div>
+<div class="ttc" id="aintersect_8h_html_a434c1a030b0e3acaf4df97cb2460eced"><div class="ttname"><a href="intersect_8h.html#a434c1a030b0e3acaf4df97cb2460eced">sortPaths_P</a></div><div class="ttdeci">void sortPaths_P(Paths)</div><div class="ttdef"><b>Definition:</b> intersect.c:100</div></div>
+<div class="ttc" id="aintersect_8h_html_a8825e952164dc385de3c4b5074821785"><div class="ttname"><a href="intersect_8h.html#a8825e952164dc385de3c4b5074821785">init_path</a></div><div class="ttdeci">Paths init_path(int len, int p[], int q[], int r[])</div><div class="ttdef"><b>Definition:</b> intersect.c:4</div></div>
+<div class="ttc" id="aintersect_8h_html_ac073207350efd314317ea290c18e830d"><div class="ttname"><a href="intersect_8h.html#ac073207350efd314317ea290c18e830d">kill_path</a></div><div class="ttdeci">void kill_path(Paths)</div><div class="ttdef"><b>Definition:</b> intersect.c:30</div></div>
+<div class="ttc" id="astructPaths_html"><div class="ttname"><a href="structPaths.html">Paths</a></div><div class="ttdef"><b>Definition:</b> intersect.h:20</div></div>
 <div class="ttc" id="autils_8h_html"><div class="ttname"><a href="utils_8h.html">utils.h</a></div><div class="ttdoc">General Utilities.</div></div>
 </div><!-- fragment --></div><!-- contents -->
 <!-- start footer part -->

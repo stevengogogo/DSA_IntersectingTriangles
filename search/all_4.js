@@ -1,4 +1,4 @@
 var searchData=
 [
-  ['utils_2eh_4',['utils.h',['../utils_8h.html',1,'']]]
+  ['kill_5fpath_7',['kill_path',['../intersect_8h.html#ac073207350efd314317ea290c18e830d',1,'intersect.c']]]
 ];
