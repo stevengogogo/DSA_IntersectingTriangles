@@ -37,7 +37,7 @@ void MERGE_SORT_FIRSTofThree(int* A, int* a2, int* a3, int p, int r){
     if (p<r){
         int q = (p+r) / 2;
         MERGE_SORT_FIRSTofThree(A, a2, a3, p, q);
-        MERGE_SORT_FIRSTofThree(A, a2, a3, q, r);
+        MERGE_SORT_FIRSTofThree(A, a2, a3, q+1, r);
         MERGE_FIRSTofThree(A, a2, a3, p, q, r);
     }
 }
