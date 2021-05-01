@@ -163,6 +163,57 @@ int main(){
 - https://kopu.chat/2017/08/10/%E5%90%88%E4%BD%B5%E6%8E%92%E5%BA%8F-merge-sort/
 
 
+## Merge sort in CLRS
+
+
+### Merge Sort
+
+```cpp
+MERGE_SORT(A,p,r)
+  if p<r
+    q = round( (p+r)/2 )
+    MERGE-SORT(A,p,q)
+    MERGE-SORT(A,q+1, r)
+    MERGE(A,p,q,r)
+```
+
+
+### Merge
+
+```cpp
+MERGE(A,p,q,r)
+  n1 = q - p + 1 // length of sub-array 1 [str, end]
+  n2 = r - q // (str, end]
+  let L[1..n1+1] and R[1..n2+1] be new arrays
+  for i = 1 to n1
+    L[i] = A[p+i-1]
+
+  for j = 1 to n2
+    R[j] = A[q+j]
+
+  L[n1+1] = inf
+  R[n2+1] = inf
+
+  i = 1
+  j = 1
+  for k = p to r
+    if L[i] <= R[j]
+      A[k] = L[i]
+      i = i+1
+    else 
+      A[k] = R[j]
+      j = j + 1 
+```
+
 ## Draft
 
 ![](img/note_20210423.jpeg)
+
+
+---
+
+## Returning array in C
+
+![](https://static.javatpoint.com/cpages/images/return-an-array-in-c4.png)
+
+Ref: https://www.javatpoint.com/return-an-array-in-c

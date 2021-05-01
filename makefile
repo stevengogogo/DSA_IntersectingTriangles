@@ -62,4 +62,5 @@ MERGE_MAIN:
 LEAK: TEST
 	valgrind --leak-check=full --show-leak-kinds=all --verbose ./test/build/test.out
 
-
+TESTD: BUILD
+	sudo bash ./test/test.sh
