@@ -27,6 +27,16 @@ void load_data(void){
     }
 
     MERGE_SORT_FIRSTofThree(pt.p, pt.l, pt.r, 0, pt.len-1);
+    
+    TEST_CHECK(pt.p[0] == -14);
+    TEST_CHECK(pt.l[0] == -16);
+    TEST_CHECK(pt.r[0] == 12);
+
+    TEST_CHECK(pt.p[9] == 15);
+    TEST_CHECK(pt.l[9] == -16);
+    TEST_CHECK(pt.r[9] == -15);
+    TEST_MSG("Got %d",pt.l[9]);
+
     //Kill
     kill_path(pt);
 }

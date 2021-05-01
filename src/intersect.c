@@ -44,7 +44,7 @@ void MERGE_SORT_FIRSTofThree(int* A, int* a2, int* a3, int p, int r){
 
 void MERGE_FIRSTofThree(int* A, int* a2, int* a3, int p, int q, int r){
     int n1 = q - p + 1; // Length of sub-array Left [p,q]
-    int n2 = r - q; // Length of sub-array right (q,r]
+    int n2 = r - (q+1) + 1; // Length of sub-array right (q,r]
 
     //Sort Array
     int* L = (int*)malloc(n1*sizeof(int) + 1);
@@ -72,7 +72,7 @@ void MERGE_FIRSTofThree(int* A, int* a2, int* a3, int p, int q, int r){
     //Dispatch
     int i = 0;
     int j = 0;
-    for(int k=p; k<r;k++){
+    for(int k=p; k<=r;k++){ //from [p,r]
         if(L[i] <= R[j]){
             A[k] = L[i];
             a2[k] = a2_L[i];
@@ -82,7 +82,7 @@ void MERGE_FIRSTofThree(int* A, int* a2, int* a3, int p, int q, int r){
         else{
             A[k] = R[j];
             a2[k] = a2_R[j];
-            a3[k] = a3_L[j];
+            a3[k] = a3_R[j];
             ++j;
         }
     }
