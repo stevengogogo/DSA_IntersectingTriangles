@@ -20,6 +20,20 @@ Paths init_path(int len, int p[], int q[], int r[]);
 /** Free arrays of the Struct @ref Paths */
 void kill_path(Paths);
 
+
+/** Merge Sort first array along with 3 arrays
+ * @param A array to be sorted
+ * @param a2 paired array of `A`
+ * @param a3 paired array of `A`
+ * @param p left start index
+ * @param r right start index
+ * @note Ref: Chapter 4. CLRS
+ */
+void MERGE_SORT_FIRSTofThree(A, a2, a3, p, r);
+/** Merge process of @ref MERGE_SORT_FIRSTofThree */
+void MERGE_FIRSTofThree(A, a2, a3, p, q, r);
+
+
 /**
  * @brief Get the intersects object
  * 
