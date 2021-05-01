@@ -97,6 +97,10 @@ void MERGE_FIRSTofThree(int* A, int* a2, int* a3, int p, int q, int r){
     free(a3_L);
 }
 
+void sortPaths_P(Paths pt){
+    MERGE_SORT_FIRSTofThree(pt.p, pt.l, pt.r, 0, pt.len-1);
+}
+
 int get_intersects(int n, int* p, int* q, int* r){
     
     return q[0];

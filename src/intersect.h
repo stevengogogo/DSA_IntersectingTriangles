@@ -34,6 +34,8 @@ void MERGE_SORT_FIRSTofThree(int* A, int* a2, int* a3, int p, int r);
 /** Merge process of @ref MERGE_SORT_FIRSTofThree */
 void MERGE_FIRSTofThree(int* A, int* a2, int* a3, int p, int q, int r);
 
+/** Sort ps in paths. Paths.l and Path.r will keep paired with Paths.p*/
+void sortPaths_P(Paths);
 
 /**
  * @brief Get the intersects object

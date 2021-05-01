@@ -26,7 +26,7 @@ void load_data(void){
         }
     }
 
-    MERGE_SORT_FIRSTofThree(pt.p, pt.l, pt.r, 0, pt.len-1);
+    sortPaths_P(pt);
 
     TEST_CHECK(pt.p[0] == -14);
     TEST_CHECK(pt.l[0] == -16);
