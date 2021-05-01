@@ -1,9 +1,10 @@
 #ifndef INTERSECT_H
 #define INTERSECT_H
 
+
+#include <stdlib.h>
+#include <assert.h>
 #include "utils.h"
-#include "stdlib.h"
-#include "assert.h"
 
 typedef struct {
   int* p;
