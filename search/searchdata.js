@@ -2,7 +2,7 @@ var indexSectionsWithContent =
 {
   0: "acgikmpsu",
   1: "p",
-  2: "giu",
+  2: "gimu",
   3: "acgikms",
   4: "i"
 };

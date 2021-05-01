@@ -1,6 +1,7 @@
 <map id="src/utils.h" name="src/utils.h">
-<area shape="rect" id="node1" title="General Utilities." alt="" coords="107,5,186,32"/>
-<area shape="rect" id="node2" href="$intersect_8h.html" title="Calculating inversions." alt="" coords="5,80,109,107"/>
-<area shape="rect" id="node3" href="$test__intersects_8h_source.html" title=" " alt="" coords="29,155,173,181"/>
-<area shape="rect" id="node4" href="$test__utils_8h_source.html" title=" " alt="" coords="185,80,295,107"/>
+<area shape="rect" id="node1" title="General Utilities." alt="" coords="145,5,223,32"/>
+<area shape="rect" id="node2" href="$intersect_8h.html" title="Calculating inversions." alt="" coords="43,80,147,107"/>
+<area shape="rect" id="node4" href="$test__intersects_8h_source.html" title=" " alt="" coords="112,155,256,181"/>
+<area shape="rect" id="node5" href="$test__utils_8h_source.html" title=" " alt="" coords="222,80,333,107"/>
+<area shape="rect" id="node3" href="$main_8c.html" title="Get Triangle Intersections with Merge sort." alt="" coords="5,155,88,181"/>
 </map>

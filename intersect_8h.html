@@ -97,8 +97,9 @@ This graph shows which files directly or indirectly include this file:</div>
 <div class="dyncontent">
 <div class="center"><img src="intersect_8h__dep__incl.png" border="0" usemap="#asrc_2intersect_8hdep" alt=""/></div>
 <map name="asrc_2intersect_8hdep" id="asrc_2intersect_8hdep">
-<area shape="rect" title="Calculating inversions." alt="" coords="25,5,129,32"/>
-<area shape="rect" href="test__intersects_8h_source.html" title=" " alt="" coords="5,80,149,107"/>
+<area shape="rect" title="Calculating inversions." alt="" coords="63,5,167,32"/>
+<area shape="rect" href="main_8c.html" title="Get Triangle Intersections with Merge sort." alt="" coords="5,80,88,107"/>
+<area shape="rect" href="test__intersects_8h_source.html" title=" " alt="" coords="112,80,256,107"/>
 </map>
 </div>
 </div>
@@ -116,6 +117,7 @@ Functions</h2></td></tr>
 <tr class="memitem:ac073207350efd314317ea290c18e830d"><td class="memItemLeft" align="right" valign="top">void&#160;</td><td class="memItemRight" valign="bottom"><a class="el" href="intersect_8h.html#ac073207350efd314317ea290c18e830d">kill_path</a> (<a class="el" href="structPaths.html">Paths</a>)</td></tr>
 <tr class="separator:ac073207350efd314317ea290c18e830d"><td class="memSeparator" colspan="2">&#160;</td></tr>
 <tr class="memitem:a042d0437d8c9cdf4ac63c6f636269441"><td class="memItemLeft" align="right" valign="top">void&#160;</td><td class="memItemRight" valign="bottom"><a class="el" href="intersect_8h.html#a042d0437d8c9cdf4ac63c6f636269441">MERGE_SORT_FIRSTofThree</a> (int *A, int *a2, int *a3, int p, int r)</td></tr>
+<tr class="memdesc:a042d0437d8c9cdf4ac63c6f636269441"><td class="mdescLeft">&#160;</td><td class="mdescRight">Merge Sort first array along with 3 arrays. Increasing order.  <a href="intersect_8h.html#a042d0437d8c9cdf4ac63c6f636269441">More...</a><br /></td></tr>
 <tr class="separator:a042d0437d8c9cdf4ac63c6f636269441"><td class="memSeparator" colspan="2">&#160;</td></tr>
 <tr class="memitem:a5c8fd40bb150eb9b965659743acc190f"><td class="memItemLeft" align="right" valign="top">void&#160;</td><td class="memItemRight" valign="bottom"><a class="el" href="intersect_8h.html#a5c8fd40bb150eb9b965659743acc190f">MERGE_FIRSTofThree</a> (int *A, int *a2, int *a3, int p, int q, int r)</td></tr>
 <tr class="separator:a5c8fd40bb150eb9b965659743acc190f"><td class="memSeparator" colspan="2">&#160;</td></tr>
@@ -345,7 +347,23 @@ int&#160;</td><td class="memItemRight" valign="bottom"><b>MERGE_COUNT_INVERSION<
         </tr>
       </table>
 </div><div class="memdoc">
-<p>Merge sort and total count inversions </p><dl class="section note"><dt>Note</dt><dd>Definition of inversions: </dd></dl>
+<p>Merge sort and total count inversions </p><dl class="params"><dt>Parameters</dt><dd>
+  <table class="params">
+    <tr><td class="paramname">Ps</td><td>monotonous increasing </td></tr>
+    <tr><td class="paramname">Ls</td><td>Min Array to be sorted </td></tr>
+    <tr><td class="paramname">Rs</td><td>Max Array to be sorted </td></tr>
+  </table>
+  </dd>
+</dl>
+<dl class="section note"><dt>Note</dt><dd>Definition of inversions:<ol type="1">
+<li>Ls[i] &gt;= Rs[j] when Ps[i] &lt; Ps[j]. i!=j</li>
+<li>Ps[i] == Ps[j]. i!= j Ref:</li>
+</ol>
+<ol type="1">
+<li><a href="https://www.csie.ntu.edu.tw/~sprout/algo2016/ppt_pdf/divide_and_conquer.pdf">https://www.csie.ntu.edu.tw/~sprout/algo2016/ppt_pdf/divide_and_conquer.pdf</a></li>
+<li><a href="https://www.geeksforgeeks.org/counting-inversions/">https://www.geeksforgeeks.org/counting-inversions/</a> </li>
+</ol>
+</dd></dl>
 
 </div>
 </div>
@@ -392,7 +410,9 @@ int&#160;</td><td class="memItemRight" valign="bottom"><b>MERGE_COUNT_INVERSION<
         </tr>
       </table>
 </div><div class="memdoc">
-<p>Merge Sort first array along with 3 arrays. Increasing order </p><dl class="params"><dt>Parameters</dt><dd>
+
+<p>Merge Sort first array along with 3 arrays. Increasing order. </p>
+<dl class="params"><dt>Parameters</dt><dd>
   <table class="params">
     <tr><td class="paramname">A</td><td>array to be sorted </td></tr>
     <tr><td class="paramname">a2</td><td>paired array of <code>A</code> </td></tr>

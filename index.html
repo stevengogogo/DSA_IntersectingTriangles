@@ -88,6 +88,108 @@ Strategy</h1>
 <li>Sort <code>max</code> and <code>min</code> at the same time with sorted P</li>
 </ol>
 <h1><a class="anchor" id="autotoc_md2"></a>
+Count inversions with C</h1>
+<div class="fragment"><div class="line"><span class="comment">// C program to Count</span></div>
+<div class="line"><span class="comment">// Inversions in an array</span></div>
+<div class="line"><span class="comment">// using Merge Sort</span></div>
+<div class="line"><span class="preprocessor">#include &lt;stdio.h&gt;</span></div>
+<div class="line"><span class="preprocessor">#include &lt;stdlib.h&gt;</span></div>
+<div class="line"> </div>
+<div class="line"><span class="keywordtype">int</span> _mergeSort(<span class="keywordtype">int</span> arr[], <span class="keywordtype">int</span> temp[],</div>
+<div class="line">               <span class="keywordtype">int</span> left, <span class="keywordtype">int</span> right);</div>
+<div class="line"><span class="keywordtype">int</span> merge(<span class="keywordtype">int</span> arr[], <span class="keywordtype">int</span> temp[],</div>
+<div class="line">          <span class="keywordtype">int</span> left, <span class="keywordtype">int</span> mid,</div>
+<div class="line">          <span class="keywordtype">int</span> right);</div>
+<div class="line"> </div>
+<div class="line"><span class="comment">/* This function sorts the input array and returns the</span></div>
+<div class="line"><span class="comment">   number of inversions in the array */</span></div>
+<div class="line"><span class="keywordtype">int</span> mergeSort(<span class="keywordtype">int</span> arr[], <span class="keywordtype">int</span> array_size)</div>
+<div class="line">{</div>
+<div class="line">    <span class="keywordtype">int</span>* temp = (<span class="keywordtype">int</span>*)malloc(<span class="keyword">sizeof</span>(<span class="keywordtype">int</span>) * array_size);</div>
+<div class="line">    <span class="keywordflow">return</span> _mergeSort(arr, temp, 0,</div>
+<div class="line">                      array_size - 1);</div>
+<div class="line">}</div>
+<div class="line"> </div>
+<div class="line"><span class="comment">/* An auxiliary recursive function</span></div>
+<div class="line"><span class="comment">   that sorts the input</span></div>
+<div class="line"><span class="comment">  array and returns the number</span></div>
+<div class="line"><span class="comment">  of inversions in the array.</span></div>
+<div class="line"><span class="comment">*/</span></div>
+<div class="line"><span class="keywordtype">int</span> _mergeSort(<span class="keywordtype">int</span> arr[], <span class="keywordtype">int</span> temp[], <span class="keywordtype">int</span> left, <span class="keywordtype">int</span> right)</div>
+<div class="line">{</div>
+<div class="line">    <span class="keywordtype">int</span> mid, inv_count = 0;</div>
+<div class="line">    <span class="keywordflow">if</span> (right &gt; left)</div>
+<div class="line">    {</div>
+<div class="line">        <span class="comment">/* Divide the array into two parts and call</span></div>
+<div class="line"><span class="comment">       _mergeSortAndCountInv() for each of the parts */</span></div>
+<div class="line">        mid = (right + left) / 2;</div>
+<div class="line"> </div>
+<div class="line">        <span class="comment">/* Inversion count will be the sum of inversions in</span></div>
+<div class="line"><span class="comment">        left-part, right-part and number of inversions in</span></div>
+<div class="line"><span class="comment">        merging */</span></div>
+<div class="line">        inv_count += _mergeSort(arr, temp, left, mid);</div>
+<div class="line">        inv_count += _mergeSort(arr, temp, mid + 1, right);</div>
+<div class="line"> </div>
+<div class="line">        <span class="comment">/*Merge the two parts*/</span></div>
+<div class="line">        inv_count += merge(arr, temp, left, mid + 1, right);</div>
+<div class="line">    }</div>
+<div class="line">    <span class="keywordflow">return</span> inv_count;</div>
+<div class="line">}</div>
+<div class="line"> </div>
+<div class="line"><span class="comment">/* This funt merges two sorted</span></div>
+<div class="line"><span class="comment">   arrays and returns inversion</span></div>
+<div class="line"><span class="comment">   count in the arrays.*/</span></div>
+<div class="line"><span class="keywordtype">int</span> merge(<span class="keywordtype">int</span> arr[], <span class="keywordtype">int</span> temp[], <span class="keywordtype">int</span> left, <span class="keywordtype">int</span> mid,</div>
+<div class="line">          <span class="keywordtype">int</span> right)</div>
+<div class="line">{</div>
+<div class="line">    <span class="keywordtype">int</span> i, j, k;</div>
+<div class="line">    <span class="keywordtype">int</span> inv_count = 0;</div>
+<div class="line"> </div>
+<div class="line">    i = left; <span class="comment">/* i is index for left subarray*/</span></div>
+<div class="line">    j = mid; <span class="comment">/* j is index for right subarray*/</span></div>
+<div class="line">    k = left; <span class="comment">/* k is index for resultant merged subarray*/</span></div>
+<div class="line">    <span class="keywordflow">while</span> ((i &lt;= mid - 1) &amp;&amp; (j &lt;= right)) {</div>
+<div class="line">        <span class="keywordflow">if</span> (arr[i] &lt;= arr[j]) {</div>
+<div class="line">            temp[k++] = arr[i++];</div>
+<div class="line">        }</div>
+<div class="line">        <span class="keywordflow">else</span></div>
+<div class="line">        {</div>
+<div class="line">            temp[k++] = arr[j++];</div>
+<div class="line"> </div>
+<div class="line">            <span class="comment">/*this is tricky -- see above</span></div>
+<div class="line"><span class="comment">             * explanation/diagram for merge()*/</span></div>
+<div class="line">            inv_count = inv_count + (mid - i);</div>
+<div class="line">        }</div>
+<div class="line">    }</div>
+<div class="line"> </div>
+<div class="line">    <span class="comment">/* Copy the remaining elements of left subarray</span></div>
+<div class="line"><span class="comment">   (if there are any) to temp*/</span></div>
+<div class="line">    <span class="keywordflow">while</span> (i &lt;= mid - 1)</div>
+<div class="line">        temp[k++] = arr[i++];</div>
+<div class="line"> </div>
+<div class="line">    <span class="comment">/* Copy the remaining elements of right subarray</span></div>
+<div class="line"><span class="comment">   (if there are any) to temp*/</span></div>
+<div class="line">    <span class="keywordflow">while</span> (j &lt;= right)</div>
+<div class="line">        temp[k++] = arr[j++];</div>
+<div class="line"> </div>
+<div class="line">    <span class="comment">/*Copy back the merged elements to original array*/</span></div>
+<div class="line">    <span class="keywordflow">for</span> (i = left; i &lt;= right; i++)</div>
+<div class="line">        arr[i] = temp[i];</div>
+<div class="line"> </div>
+<div class="line">    <span class="keywordflow">return</span> inv_count;</div>
+<div class="line">}</div>
+<div class="line"> </div>
+<div class="line"><span class="comment">/* Driver code*/</span></div>
+<div class="line"><span class="keywordtype">int</span> main(<span class="keywordtype">int</span> argv, <span class="keywordtype">char</span>** args)</div>
+<div class="line">{</div>
+<div class="line">    <span class="keywordtype">int</span> arr[] = { 1, 20, 6, 4, 5 };</div>
+<div class="line">    printf(<span class="stringliteral">&quot; Number of inversions are %d \n&quot;</span>,</div>
+<div class="line">           mergeSort(arr, 5));</div>
+<div class="line">    getchar();</div>
+<div class="line">    <span class="keywordflow">return</span> 0;</div>
+<div class="line">}</div>
+</div><!-- fragment --><p>Ref: <a href="https://www.geeksforgeeks.org/counting-inversions/">https://www.geeksforgeeks.org/counting-inversions/</a></p>
+<h1><a class="anchor" id="autotoc_md3"></a>
 How to know two triangles have intersection(s)?</h1>
 <p>Let points on two distinct triangles be <code>(P,Q,R)</code> and &lsquo;(P&rsquo;,Q',R')`.</p>
 <ul>
@@ -97,7 +199,7 @@ How to know two triangles have intersection(s)?</h1>
 </li>
 <li>Intersection happens: Otherwise</li>
 </ul>
-<h1><a class="anchor" id="autotoc_md3"></a>
+<h1><a class="anchor" id="autotoc_md4"></a>
 Range of &lt;tt&gt;Int&lt;/tt&gt;</h1>
 <ul>
 <li><code>Int</code>: 4 bytes<ul>
@@ -109,9 +211,9 @@ Range of &lt;tt&gt;Int&lt;/tt&gt;</h1>
 </li>
 </ul>
 <p><b>Ref</b>: <a href="https://www.tutorialspoint.com/cprogramming/c_data_types.htm">https://www.tutorialspoint.com/cprogramming/c_data_types.htm</a></p>
-<h1><a class="anchor" id="autotoc_md4"></a>
+<h1><a class="anchor" id="autotoc_md5"></a>
 Hints</h1>
-<h2><a class="anchor" id="autotoc_md5"></a>
+<h2><a class="anchor" id="autotoc_md6"></a>
 排序</h2>
 <ol type="1">
 <li>排序 <code>P</code></li>
@@ -119,7 +221,7 @@ Hints</h1>
 <li>右邊 <code>min</code></li>
 <li></li>
 </ol>
-<h2><a class="anchor" id="autotoc_md6"></a>
+<h2><a class="anchor" id="autotoc_md7"></a>
 逆序述對</h2>
 <ul>
 <li>定義<ul>
@@ -133,7 +235,7 @@ Hints</h1>
 <li><a href="https://www.csie.ntu.edu.tw/~sprout/algo2016/ppt_pdf/divide_and_conquer.pdf">https://www.csie.ntu.edu.tw/~sprout/algo2016/ppt_pdf/divide_and_conquer.pdf</a></li>
 <li><a href="https://medium.com/@ssbothwell/counting-inversions-with-merge-sort-4d9910dc95f0">https://medium.com/@ssbothwell/counting-inversions-with-merge-sort-4d9910dc95f0</a></li>
 </ul>
-<h2><a class="anchor" id="autotoc_md7"></a>
+<h2><a class="anchor" id="autotoc_md8"></a>
 Merge sort</h2>
 <div class="fragment"><div class="line"><span class="preprocessor">#include &lt;stdio.h&gt;</span></div>
 <div class="line"><span class="preprocessor">#include &lt;stdlib.h&gt;</span></div>
@@ -222,9 +324,9 @@ Merge sort</h2>
 </div><!-- fragment --><p><b>Ref</b>:</p><ul>
 <li><a href="https://kopu.chat/2017/08/10/%E5%90%88%E4%BD%B5%E6%8E%92%E5%BA%8F-merge-sort/">https://kopu.chat/2017/08/10/%E5%90%88%E4%BD%B5%E6%8E%92%E5%BA%8F-merge-sort/</a></li>
 </ul>
-<h1><a class="anchor" id="autotoc_md8"></a>
+<h1><a class="anchor" id="autotoc_md9"></a>
 Merge sort in CLRS</h1>
-<h2><a class="anchor" id="autotoc_md9"></a>
+<h2><a class="anchor" id="autotoc_md10"></a>
 Merge Sort</h2>
 <div class="fragment"><div class="line">MERGE_SORT(A,p,r)</div>
 <div class="line">  <span class="keywordflow">if</span> p&lt;r</div>
@@ -232,7 +334,7 @@ Merge Sort</h2>
 <div class="line">    MERGE-SORT(A,p,q)</div>
 <div class="line">    MERGE-SORT(A,q+1, r)</div>
 <div class="line">    MERGE(A,p,q,r)</div>
-</div><!-- fragment --><h2><a class="anchor" id="autotoc_md10"></a>
+</div><!-- fragment --><h2><a class="anchor" id="autotoc_md11"></a>
 Merge</h2>
 <div class="fragment"><div class="line">MERGE(A,p,q,r)</div>
 <div class="line">  n1 = q - p + 1 <span class="comment">// length of sub-array 1 [str, end]</span></div>
@@ -256,11 +358,11 @@ Merge</h2>
 <div class="line">    <span class="keywordflow">else</span> </div>
 <div class="line">      A[k] = R[j]</div>
 <div class="line">      j = j + 1 </div>
-</div><!-- fragment --><h1><a class="anchor" id="autotoc_md11"></a>
+</div><!-- fragment --><h1><a class="anchor" id="autotoc_md12"></a>
 Draft</h1>
 <p><img src="img/note_20210423.jpeg" alt="" class="inline"/></p>
 <hr  />
-<h1><a class="anchor" id="autotoc_md13"></a>
+<h1><a class="anchor" id="autotoc_md14"></a>
 Returning array in C</h1>
 <p><img src="https://static.javatpoint.com/cpages/images/return-an-array-in-c4.png" alt="" class="inline"/></p>
 <p>Ref: <a href="https://www.javatpoint.com/return-an-array-in-c">https://www.javatpoint.com/return-an-array-in-c</a> </p>
