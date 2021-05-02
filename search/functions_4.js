@@ -1,4 +1,4 @@
 var searchData=
 [
-  ['kill_5fpath_24',['kill_path',['../intersect_8h.html#ac073207350efd314317ea290c18e830d',1,'intersect.c']]]
+  ['init_5fpath_26',['init_path',['../intersect_8h.html#a8825e952164dc385de3c4b5074821785',1,'intersect.c']]]
 ];
