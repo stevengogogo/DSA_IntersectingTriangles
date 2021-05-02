@@ -26,7 +26,13 @@ void load_data(void){
         }
     }
 
-    sortPaths_P(pt);
+
+    for(int i=0;i<n;i++){
+        TEST_CHECK(pt.l[i]==pt.l_[i]);
+        TEST_MSG("%d != %d",pt.l[i],pt.l_[i]);
+    }
+
+    sortPaths_P(pt);    
 
     TEST_CHECK(pt.p[0] == -14);
     TEST_CHECK(pt.l[0] == -16);

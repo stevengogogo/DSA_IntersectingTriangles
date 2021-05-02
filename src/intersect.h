@@ -14,12 +14,14 @@
 
 #include <stdlib.h>
 #include <assert.h>
+#include <string.h>
 #include <limits.h> // INT_MAX
 #include "utils.h"
 
 typedef struct {
   int* p;
   int* l;
+  int* l_; //Original 
   int* r;
   int len;
 } Paths;

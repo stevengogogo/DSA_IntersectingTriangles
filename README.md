@@ -322,3 +322,8 @@ MERGE(A,p,q,r)
 ![](https://static.javatpoint.com/cpages/images/return-an-array-in-c4.png)
 
 Ref: https://www.javatpoint.com/return-an-array-in-c
+
+
+## Copy array with `memcpy`
+
+https://stackoverflow.com/questions/2681061/memcpy-what-should-the-value-of-the-size-parameter-be

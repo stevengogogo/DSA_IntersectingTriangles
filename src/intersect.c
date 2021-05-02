@@ -5,10 +5,12 @@ Paths init_path(int len, int p[], int q[], int r[]){
     
 
     Paths pt;
+    int arrSize = len*sizeof(int);
     pt.len = len;
-    pt.p = (int*)malloc(len*sizeof(int));
-    pt.l = (int*)malloc(len*sizeof(int));
-    pt.r = (int*)malloc(len*sizeof(int));
+    pt.p = (int*)malloc(arrSize);
+    pt.l = (int*)malloc(arrSize);
+    pt.l_ = (int*)malloc(arrSize);
+    pt.r = (int*)malloc(arrSize);
 
     // Copy P
     copy_arr(pt.p, p, 0, len);
@@ -23,6 +25,8 @@ Paths init_path(int len, int p[], int q[], int r[]){
         pt.l[i] = L;
         pt.r[i] = R;
     }
+
+    memcpy(pt.l_, pt.l, arrSize);
    
     return pt;
 }
@@ -31,6 +35,7 @@ void kill_path(Paths pt){
     free(pt.l);
     free(pt.p);
     free(pt.r);
+    free(pt.l_);
 }
 
 void MERGE_SORT_FIRSTofThree(int* A, int* a2, int* a3, int p, int r){
