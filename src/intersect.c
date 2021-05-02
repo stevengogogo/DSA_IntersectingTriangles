@@ -169,12 +169,30 @@ int MERGE_COUNT_INVERSION(int* Ps, int* Ls, int* Rs, int l, int m, int r){
     //Count inversion
     int count = m+1;
     int inv = 0;
+
+    //Count same Ps
+    int isSame;
+    int samePnoCross;
+    int beStr = m+1;
+    int beEnd = m+1;
+
     for (int k=l;k<=m;k++){
+
+        //Find Max{left} > Min{right}
         while(count <= r && Rs[k] >= Ls[count]){
             ++count;
         }
 
-        inv = inv + count - (m + 1) ;
+        //Find Identical Ps
+        isSame = RegionOfBiggerEqualMono(Ps, m+1, r, Ps[k], &beStr, &beEnd);
+        assert(beEnd>=beStr);
+        if (isSame)
+            samePnoCross = ExcludeLen(m+1, count-1, beStr, beEnd);
+        else{
+            samePnoCross = 0;
+        }
+
+        inv = inv + count - (m + 1) + samePnoCross;
     }
 
 
@@ -218,6 +236,57 @@ int MERGE_COUNT_INVERSION(int* Ps, int* Ls, int* Rs, int l, int m, int r){
     return inv;
 }
 
+int RegionOfBiggerEqualMono(int arr[], int str, int end, int key,int* beStr, int* beEnd){
+
+    int shift = 0;
+
+    //Find Start point
+    while(*beStr<=end && arr[*beStr] < key){
+        ++(*beStr);
+        ++shift;
+    }
+
+    if (shift!=0){
+        --(*beStr);
+    }
+
+    //Find End point
+    int FindSame=0;
+    *beEnd = *beStr;
+    if(arr[*beStr] != key){ //key is bigger  than start point. No match
+        return FindSame;
+    }
+    else{
+        FindSame=1;
+        while(*beEnd <= end && arr[*beEnd] == key){
+            ++(*beEnd);
+        }
+        --(*beEnd);
+
+        return FindSame;
+    }
+}
+
+int ExcludeLen(int exStr, int exEnd, int conStr, int conEnd){
+    assert(conEnd >= conStr);
+    assert(exEnd >= exStr);
+    if (conStr != -1)
+        assert(conEnd!=-1);
+    if( conStr == -1 && conEnd == -1)
+        return 0;
+    
+    if (conStr>exEnd){ // No over lap
+        return conEnd - conStr + 1;
+    }
+    else{
+        if(conEnd<=exEnd){
+            return 0;
+        }
+        else{
+            return conEnd - exEnd;
+        }
+    }
+}
 
 int get_intersects(int n, int* p, int* q, int* r){
     Paths pt = init_path(n,p,q,r);

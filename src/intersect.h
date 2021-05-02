@@ -58,8 +58,16 @@ void MERGE_FIRSTofThree(int* A, int* a2, int* a3, int p, int q, int r);
 int MERGE_SORT_COUNT_INVERSION(int* Ps, int* Ls, int* Rs,int l, int r);
 int MERGE_COUNT_INVERSION(int* Ps, int* Ls, int* Rs, int l, int q, int r);
 
-/** Sort ps in paths. Paths.l and Path.r will keep paired with Paths.p*/
+/** Sort ps in paths. `Paths.l` and `Path.r` will keep paired with `Paths.p`. Refer to @ref Paths*/
 void sortPaths_P(Paths);
+
+
+/** Find Region of bigger or equal to the `key` in a monotonous array*/
+int RegionOfBiggerEqualMono(int arr[], int str, int end, int key,int* beStr, int* beEnd);
+/** Exclude the region bounded by `[conStr,conEnd]` with the mask `[exStr, exEnd]`.
+ * @return length of the excluded region
+*/
+int ExcludeLen(int exStr, int exEnd, int conStr, int conEnd);
 
 /**
  * @brief Get the intersects object
