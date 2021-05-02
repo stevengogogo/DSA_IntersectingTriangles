@@ -164,7 +164,7 @@ int MERGE_COUNT_INVERSION(Paths pt,int* Ps, int* Ls, int* Rs, int l, int m, int 
 
     //Finish sorting
     int n1 = m - l + 1;
-    int n2 = r - (l+1) + 1;
+    int n2 = r - (m+1) + 1;
 
     // Sort Array
     int* Ls_L = (int*)malloc(n1*sizeof(int) + 1);
