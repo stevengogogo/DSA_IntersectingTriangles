@@ -47,9 +47,19 @@ void load_data(void){
     TEST_CHECK(pt.l[4] == -7);
     TEST_CHECK(pt.r[4] == 2);
 
+    printf("\n");
     for(int i=0;i<10;i++){
-        printf("%d ", pt.l[i]);
+        printf("%d\t", pt.p[i]);
     }
+    printf("\n");
+    for(int i=0;i<10;i++){
+        printf("%d\t", pt.l[i]);
+    }
+    printf("\n");
+    for(int i=0;i<10;i++){
+        printf("%d\t", pt.r[i]);
+    }
+    printf("\n");
 
     MERGE_SORT_COUNT_INVERSION(pt, pt.p, pt.l, pt.r, 0, pt.len-1);
     TEST_CHECK(pt.p[0] == -14);
@@ -59,9 +69,11 @@ void load_data(void){
     TEST_CHECK(pt.p[9] == 15);
     TEST_CHECK(pt.l[9] == 12);
     TEST_MSG("Got %d",pt.l[9]);
+
     for(int i=0;i<10;i++){
         printf("%d ", pt.l[i]);
     }
+
     TEST_CHECK(pt.r[9] == 14);
     TEST_MSG("Got %d",pt.r[9]);
 
