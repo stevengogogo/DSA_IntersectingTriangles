@@ -186,13 +186,14 @@ int MERGE_COUNT_INVERSION(int* Ps, int* Ls, int* Rs, int l, int m, int r){
         //Find Identical Ps
         isSame = RegionOfBiggerEqualMono(Ps, m+1, r, Ps[k], &beStr, &beEnd);
         assert(beEnd>=beStr);
-        if (isSame)
-            samePnoCross = ExcludeLen(m+1, count-1, beStr, beEnd);
+        if (isSame){
+            samePnoCross = ExcludeLen(m, count-1, beStr, beEnd);
+        }
         else{
             samePnoCross = 0;
         }
 
-        inv = inv + count - (m + 1) + samePnoCross;
+        inv = inv + (count - (m + 1)) + samePnoCross;
     }
 
 
@@ -258,10 +259,13 @@ int RegionOfBiggerEqualMono(int arr[], int str, int end, int key,int* beStr, int
     }
     else{
         FindSame=1;
+        shift = 0;
         while(*beEnd <= end && arr[*beEnd] == key){
             ++(*beEnd);
+            ++shift;
         }
-        --(*beEnd);
+        if(shift!=0)
+            --(*beEnd);
 
         return FindSame;
     }
@@ -271,22 +275,23 @@ int ExcludeLen(int exStr, int exEnd, int conStr, int conEnd){
     assert(conEnd >= conStr);
     assert(exEnd >= exStr);
     
-    if (conStr>exEnd || conEnd < exStr){ // No over lap
+    if(conEnd > exEnd && exStr>conStr){ // Case 1
+        return conEnd - conStr + 1 - (exEnd-exStr + 1);
+    }
+    else if(conStr >= exStr && conStr <= exEnd && conEnd >= exStr && conEnd <= exEnd){ // Case 2
+        return 0;
+    }
+    else if(conEnd < exStr || conStr > exEnd){ // Case 3/4
         return conEnd - conStr + 1;
     }
-    else if(conStr == exEnd || conEnd == exStr){
-        return conEnd-conStr;
+    else if(conStr<exStr && conEnd >= exStr && conEnd <= exEnd){ //Case 5
+        return exStr - conStr;
     }
-    else if(conEnd > exStr){
-        if(exStr > conStr  ){
-            return 0;
-        }
-        else if(exStr < conStr){
-            return conEnd - exEnd;
-        }
-        else{
-
-        }
+    else if(conEnd > exEnd && conStr >= exStr && conStr <= exEnd){ // Case 6
+        return conEnd - exEnd;
+    }
+    else{
+        assert(1==0);
     }
     
 }
