@@ -57,8 +57,8 @@ void MERGE_FIRSTofThree(int* A, int* a2, int* a3, int p, int q, int r);
  * 1. https://www.csie.ntu.edu.tw/~sprout/algo2016/ppt_pdf/divide_and_conquer.pdf
  * 2. https://www.geeksforgeeks.org/counting-inversions/
 */
-int MERGE_SORT_COUNT_INVERSION(int* Ps, int* Ls, int* Rs,int l, int r);
-int MERGE_COUNT_INVERSION(int* Ps, int* Ls, int* Rs, int l, int q, int r);
+int MERGE_SORT_COUNT_INVERSION(Paths pt, int* Ps, int* Ls, int* Rs,int l, int r);
+int MERGE_COUNT_INVERSION(Paths pt, int* Ps, int* Ls, int* Rs, int l, int q, int r);
 
 /** Sort ps in paths. `Paths.l` and `Path.r` will keep paired with `Paths.p`. Refer to @ref Paths*/
 void sortPaths_P(Paths);

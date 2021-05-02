@@ -106,18 +106,18 @@ void sortPaths_P(Paths pt){
     MERGE_SORT_FIRSTofThree(pt.p, pt.l, pt.r, 0, pt.len-1);
 }
 
-int MERGE_SORT_COUNT_INVERSION(int* Ps, int* Ls, int* Rs,int l, int r){
+int MERGE_SORT_COUNT_INVERSION(Paths pt,int* Ps, int* Ls, int* Rs,int l, int r){
     int inv=0;
     if (l<r){
         int m = (l+r)/2;
-        inv += MERGE_SORT_COUNT_INVERSION(Ps, Ls, Rs, l, m);
-        inv += MERGE_SORT_COUNT_INVERSION(Ps, Ls, Rs, m+1, r);
-        inv += MERGE_COUNT_INVERSION(Ps, Ls, Rs, l, m, r);
+        inv += MERGE_SORT_COUNT_INVERSION(pt, Ps, Ls, Rs, l, m);
+        inv += MERGE_SORT_COUNT_INVERSION(pt, Ps, Ls, Rs, m+1, r);
+        inv += MERGE_COUNT_INVERSION(pt, Ps, Ls, Rs, l, m, r);
     }
     return inv;
 }
 
-int MERGE_COUNT_INVERSION(int* Ps, int* Ls, int* Rs, int l, int m, int r){
+int MERGE_COUNT_INVERSION(Paths pt,int* Ps, int* Ls, int* Rs, int l, int m, int r){
     int n1 = m - l + 1;
     int n2 = r - (l+1) + 1;
 
@@ -145,31 +145,43 @@ int MERGE_COUNT_INVERSION(int* Ps, int* Ls, int* Rs, int l, int m, int r){
     int count = m+1;
     int inv = 0;
 
-    //Count same Ps
-    int isSame;
-    int samePnoCross;
-    int beStr = m+1;
-    int beEnd = m+1;
-
     for (int k=l;k<=m;k++){
-
         //Find Max{left} > Min{right}
         while(count <= r && Rs[k] >= Ls[count]){
             ++count;
         }
 
-        //Find Identical Ps
-        isSame = RegionOfBiggerEqualMono(Ps, m+1, r, Ps[k], &beStr, &beEnd);
-        assert(beEnd>=beStr);
-        if (isSame){
-            samePnoCross = ExcludeLen(m, count-1, beStr, beEnd);
+        //Sum up
+        inv = inv + (count - (m + 1));
+    }
+
+    //Find Identical Ps
+    int samePnoCross=0;
+    if(Ps[m] == Ps[m+1]){
+        int PL = m; //left most of P
+        int PR = m+1; //right most of P
+        int nPL; //Number of identical P on left; on right
+        int nPR = 0;
+        
+        //Find boundary of identical ps
+        while(Ps[PL]==Ps[m]){
+            --PL;
         }
-        else{
-            samePnoCross = 0;
+        nPL = m - PL;
+
+
+        //find un-scan identical P on the left
+        while(Ps[PR] == Ps[m+1]){ 
+            if (pt.l_[PR] >= Ls[count] && count <=r){ // when count>r, all tri are scanned.
+                ++nPR;
+            }
+            ++PR;
         }
 
-        inv = inv + (count - (m + 1)) + samePnoCross;
+        samePnoCross = nPL * nPR; 
     }
+
+    inv+= samePnoCross;
 
 
     //Finish sorting
@@ -273,7 +285,7 @@ int ExcludeLen(int exStr, int exEnd, int conStr, int conEnd){
 int get_intersects(int n, int* p, int* q, int* r){
     Paths pt = init_path(n,p,q,r);
     sortPaths_P(pt);
-    int inv = MERGE_SORT_COUNT_INVERSION(pt.p, pt.l, pt.r, 0, pt.len-1);
+    int inv = MERGE_SORT_COUNT_INVERSION(pt, pt.p, pt.l, pt.r, 0, pt.len-1);
     kill_path(pt);
     return inv;
 }
