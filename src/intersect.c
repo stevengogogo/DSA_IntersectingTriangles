@@ -139,9 +139,9 @@ int MERGE_COUNT_INVERSION(int* Ps, int* Ls, int* Rs, int l, int m, int r){
     int Lj = 0;
     int Ri = 0;
     int Rj = 0;
-
+    
     //Sort Ls and Rs
-    for (int k=l;k<=m;k++){
+    for (int k=m+1;k<=r;k++){
         //Dispatch Ls
         if(Ls_L[Li] <= Ls_R[Lj]){
             Ls[k] = Ls_L[Li];
@@ -154,7 +154,7 @@ int MERGE_COUNT_INVERSION(int* Ps, int* Ls, int* Rs, int l, int m, int r){
 
     }
 
-    for (int k=m+1;k<=r;k++){
+    for (int k=l;k<=m;k++){
         //Dispatch Rs
         if(Rs_L[Ri] <= Rs_R[Rj]){
             Rs[k] = Rs_L[Ri];
@@ -202,6 +202,7 @@ int MERGE_COUNT_INVERSION(int* Ps, int* Ls, int* Rs, int l, int m, int r){
     Lj = 0;
     Ri = 0;
     Rj = 0;
+
     for (int k=l;k<=r;k++){
         //Dispatch Ls
         if(Ls_L[Li] <= Ls_R[Lj]){
