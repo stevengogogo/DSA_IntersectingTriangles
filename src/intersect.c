@@ -176,6 +176,37 @@ int MERGE_COUNT_INVERSION(int* Ps, int* Ls, int* Rs, int l, int m, int r){
 
         inv = inv + count - (m + 1) ;
     }
+
+
+    //Finish sorting
+    Li = 0;
+    Lj = 0;
+    Ri = 0;
+    Rj = 0;
+    for (int k=l;k<=r;k++){
+        //Dispatch Ls
+        if(Ls_L[Li] <= Ls_R[Lj]){
+            Ls[k] = Ls_L[Li];
+            ++Li;
+        }
+        else{
+            Ls[k] = Ls_R[Lj];
+            ++Lj;
+        }
+
+    }
+
+    for (int k=l;k<=r;k++){
+        //Dispatch Rs
+        if(Rs_L[Ri] <= Rs_R[Rj]){
+            Rs[k] = Rs_L[Ri];
+            ++Ri;
+        }
+        else{
+            Rs[k] = Rs_R[Rj];
+            ++Rj;
+        }
+    }
     
     
     //Free
