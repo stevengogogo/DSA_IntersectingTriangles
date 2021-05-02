@@ -135,36 +135,6 @@ int MERGE_COUNT_INVERSION(int* Ps, int* Ls, int* Rs, int l, int m, int r){
     Ls_R[n2] = INT_MAX;
     Rs_R[n2] = INT_MAX;
 
-    int Li = 0;
-    int Lj = 0;
-    int Ri = 0;
-    int Rj = 0;
-    
-    //Sort Ls and Rs
-    for (int k=m+1;k<=r;k++){
-        //Dispatch Ls
-        if(Ls_L[Li] <= Ls_R[Lj]){
-            Ls[k] = Ls_L[Li];
-            ++Li;
-        }
-        else{
-            Ls[k] = Ls_R[Lj];
-            ++Lj;
-        }
-
-    }
-
-    for (int k=l;k<=m;k++){
-        //Dispatch Rs
-        if(Rs_L[Ri] <= Rs_R[Rj]){
-            Rs[k] = Rs_L[Ri];
-            ++Ri;
-        }
-        else{
-            Rs[k] = Rs_R[Rj];
-            ++Rj;
-        }
-    }
 
     //Count inversion
     int count = m+1;
@@ -198,10 +168,10 @@ int MERGE_COUNT_INVERSION(int* Ps, int* Ls, int* Rs, int l, int m, int r){
 
 
     //Finish sorting
-    Li = 0;
-    Lj = 0;
-    Ri = 0;
-    Rj = 0;
+    int Li = 0;
+    int Lj = 0;
+    int Ri = 0;
+    int Rj = 0;
 
     for (int k=l;k<=r;k++){
         //Dispatch Ls
@@ -214,9 +184,6 @@ int MERGE_COUNT_INVERSION(int* Ps, int* Ls, int* Rs, int l, int m, int r){
             ++Lj;
         }
 
-    }
-
-    for (int k=l;k<=r;k++){
         //Dispatch Rs
         if(Rs_L[Ri] <= Rs_R[Rj]){
             Rs[k] = Rs_L[Ri];
@@ -227,6 +194,7 @@ int MERGE_COUNT_INVERSION(int* Ps, int* Ls, int* Rs, int l, int m, int r){
             ++Rj;
         }
     }
+
     
     
     //Free
