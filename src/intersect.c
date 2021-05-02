@@ -270,22 +270,25 @@ int RegionOfBiggerEqualMono(int arr[], int str, int end, int key,int* beStr, int
 int ExcludeLen(int exStr, int exEnd, int conStr, int conEnd){
     assert(conEnd >= conStr);
     assert(exEnd >= exStr);
-    if (conStr != -1)
-        assert(conEnd!=-1);
-    if( conStr == -1 && conEnd == -1)
-        return 0;
     
-    if (conStr>exEnd){ // No over lap
+    if (conStr>exEnd || conEnd < exStr){ // No over lap
         return conEnd - conStr + 1;
     }
-    else{
-        if(conEnd<=exEnd){
+    else if(conStr == exEnd || conEnd == exStr){
+        return conEnd-conStr;
+    }
+    else if(conEnd > exStr){
+        if(exStr > conStr  ){
             return 0;
         }
-        else{
+        else if(exStr < conStr){
             return conEnd - exEnd;
         }
+        else{
+
+        }
     }
+    
 }
 
 int get_intersects(int n, int* p, int* q, int* r){
