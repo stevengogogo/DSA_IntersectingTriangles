@@ -118,28 +118,6 @@ int MERGE_SORT_COUNT_INVERSION(Paths pt,int* Ps, int* Ls, int* Rs,int l, int r){
 }
 
 int MERGE_COUNT_INVERSION(Paths pt,int* Ps, int* Ls, int* Rs, int l, int m, int r){
-    int n1 = m - l + 1;
-    int n2 = r - (l+1) + 1;
-
-    // Sort Array
-    int* Ls_L = (int*)malloc(n1*sizeof(int) + 1);
-    int* Ls_R = (int*)malloc(n2*sizeof(int) + 1);
-    int* Rs_L = (int*)malloc(n1*sizeof(int) + 1);
-    int* Rs_R = (int*)malloc(n2*sizeof(int) + 1);   
-
-    //Copy left part
-    copy_arr(Ls_L, Ls, l, m+1);
-    copy_arr(Rs_L, Rs, l, m+1);
-    //Copy right part
-    copy_arr(Ls_R, Ls, m+1, r+1);
-    copy_arr(Rs_R, Rs, m+1, r+1);
-
-    //Sentinel 
-    Ls_L[n1] = INT_MAX;
-    Rs_L[n1] = INT_MAX;
-    Ls_R[n2] = INT_MAX;
-    Rs_R[n2] = INT_MAX;
-
 
     //Count inversion
     int count = m+1;
@@ -185,6 +163,27 @@ int MERGE_COUNT_INVERSION(Paths pt,int* Ps, int* Ls, int* Rs, int l, int m, int 
 
 
     //Finish sorting
+    int n1 = m - l + 1;
+    int n2 = r - (l+1) + 1;
+
+    // Sort Array
+    int* Ls_L = (int*)malloc(n1*sizeof(int) + 1);
+    int* Ls_R = (int*)malloc(n2*sizeof(int) + 1);
+    int* Rs_L = (int*)malloc(n1*sizeof(int) + 1);
+    int* Rs_R = (int*)malloc(n2*sizeof(int) + 1);   
+
+    //Copy left part
+    copy_arr(Ls_L, Ls, l, m+1);
+    copy_arr(Rs_L, Rs, l, m+1);
+    //Copy right part
+    copy_arr(Ls_R, Ls, m+1, r+1);
+    copy_arr(Rs_R, Rs, m+1, r+1);
+
+    //Sentinel 
+    Ls_L[n1] = INT_MAX;
+    Rs_L[n1] = INT_MAX;
+    Ls_R[n2] = INT_MAX;
+    Rs_R[n2] = INT_MAX;
     int Li = 0;
     int Lj = 0;
     int Ri = 0;
@@ -212,8 +211,6 @@ int MERGE_COUNT_INVERSION(Paths pt,int* Ps, int* Ls, int* Rs, int l, int m, int 
         }
     }
 
-    
-    
     //Free
     free(Ls_L);
     free(Ls_R);
