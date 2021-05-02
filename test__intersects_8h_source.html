@@ -97,30 +97,36 @@ $(function() {
 <div class="line"><a name="l00026"></a><span class="lineno">   26</span>&#160;        }</div>
 <div class="line"><a name="l00027"></a><span class="lineno">   27</span>&#160;    }</div>
 <div class="line"><a name="l00028"></a><span class="lineno">   28</span>&#160; </div>
-<div class="line"><a name="l00029"></a><span class="lineno">   29</span>&#160;    <a class="code" href="intersect_8h.html#a434c1a030b0e3acaf4df97cb2460eced">sortPaths_P</a>(pt);</div>
-<div class="line"><a name="l00030"></a><span class="lineno">   30</span>&#160; </div>
-<div class="line"><a name="l00031"></a><span class="lineno">   31</span>&#160;    TEST_CHECK(pt.p[0] == -14);</div>
-<div class="line"><a name="l00032"></a><span class="lineno">   32</span>&#160;    TEST_CHECK(pt.l[0] == -16);</div>
-<div class="line"><a name="l00033"></a><span class="lineno">   33</span>&#160;    TEST_CHECK(pt.r[0] == 12);</div>
+<div class="line"><a name="l00029"></a><span class="lineno">   29</span>&#160; </div>
+<div class="line"><a name="l00030"></a><span class="lineno">   30</span>&#160;    <span class="keywordflow">for</span>(<span class="keywordtype">int</span> i=0;i&lt;n;i++){</div>
+<div class="line"><a name="l00031"></a><span class="lineno">   31</span>&#160;        TEST_CHECK(pt.l[i]==pt.l_[i]);</div>
+<div class="line"><a name="l00032"></a><span class="lineno">   32</span>&#160;        TEST_MSG(<span class="stringliteral">&quot;%d != %d&quot;</span>,pt.l[i],pt.l_[i]);</div>
+<div class="line"><a name="l00033"></a><span class="lineno">   33</span>&#160;    }</div>
 <div class="line"><a name="l00034"></a><span class="lineno">   34</span>&#160; </div>
-<div class="line"><a name="l00035"></a><span class="lineno">   35</span>&#160;    TEST_CHECK(pt.p[9] == 15);</div>
-<div class="line"><a name="l00036"></a><span class="lineno">   36</span>&#160;    TEST_CHECK(pt.l[9] == -16);</div>
-<div class="line"><a name="l00037"></a><span class="lineno">   37</span>&#160;    TEST_CHECK(pt.r[9] == -15);</div>
-<div class="line"><a name="l00038"></a><span class="lineno">   38</span>&#160;    TEST_MSG(<span class="stringliteral">&quot;Got %d&quot;</span>,pt.l[9]);</div>
-<div class="line"><a name="l00039"></a><span class="lineno">   39</span>&#160; </div>
-<div class="line"><a name="l00040"></a><span class="lineno">   40</span>&#160;    TEST_CHECK(pt.p[4] == -5);</div>
-<div class="line"><a name="l00041"></a><span class="lineno">   41</span>&#160;    TEST_CHECK(pt.l[4] == -7);</div>
-<div class="line"><a name="l00042"></a><span class="lineno">   42</span>&#160;    TEST_CHECK(pt.r[4] == 2);</div>
-<div class="line"><a name="l00043"></a><span class="lineno">   43</span>&#160; </div>
-<div class="line"><a name="l00044"></a><span class="lineno">   44</span>&#160;    <span class="comment">//Kill</span></div>
-<div class="line"><a name="l00045"></a><span class="lineno">   45</span>&#160;    <a class="code" href="intersect_8h.html#ac073207350efd314317ea290c18e830d">kill_path</a>(pt);</div>
-<div class="line"><a name="l00046"></a><span class="lineno">   46</span>&#160;}</div>
+<div class="line"><a name="l00035"></a><span class="lineno">   35</span>&#160;    <a class="code" href="intersect_8h.html#a434c1a030b0e3acaf4df97cb2460eced">sortPaths_P</a>(pt);    </div>
+<div class="line"><a name="l00036"></a><span class="lineno">   36</span>&#160; </div>
+<div class="line"><a name="l00037"></a><span class="lineno">   37</span>&#160;    TEST_CHECK(pt.p[0] == -14);</div>
+<div class="line"><a name="l00038"></a><span class="lineno">   38</span>&#160;    TEST_CHECK(pt.l[0] == -16);</div>
+<div class="line"><a name="l00039"></a><span class="lineno">   39</span>&#160;    TEST_CHECK(pt.r[0] == 12);</div>
+<div class="line"><a name="l00040"></a><span class="lineno">   40</span>&#160; </div>
+<div class="line"><a name="l00041"></a><span class="lineno">   41</span>&#160;    TEST_CHECK(pt.p[9] == 15);</div>
+<div class="line"><a name="l00042"></a><span class="lineno">   42</span>&#160;    TEST_CHECK(pt.l[9] == -16);</div>
+<div class="line"><a name="l00043"></a><span class="lineno">   43</span>&#160;    TEST_CHECK(pt.r[9] == -15);</div>
+<div class="line"><a name="l00044"></a><span class="lineno">   44</span>&#160;    TEST_MSG(<span class="stringliteral">&quot;Got %d&quot;</span>,pt.l[9]);</div>
+<div class="line"><a name="l00045"></a><span class="lineno">   45</span>&#160; </div>
+<div class="line"><a name="l00046"></a><span class="lineno">   46</span>&#160;    TEST_CHECK(pt.p[4] == -5);</div>
+<div class="line"><a name="l00047"></a><span class="lineno">   47</span>&#160;    TEST_CHECK(pt.l[4] == -7);</div>
+<div class="line"><a name="l00048"></a><span class="lineno">   48</span>&#160;    TEST_CHECK(pt.r[4] == 2);</div>
+<div class="line"><a name="l00049"></a><span class="lineno">   49</span>&#160; </div>
+<div class="line"><a name="l00050"></a><span class="lineno">   50</span>&#160;    <span class="comment">//Kill</span></div>
+<div class="line"><a name="l00051"></a><span class="lineno">   51</span>&#160;    <a class="code" href="intersect_8h.html#ac073207350efd314317ea290c18e830d">kill_path</a>(pt);</div>
+<div class="line"><a name="l00052"></a><span class="lineno">   52</span>&#160;}</div>
 <div class="ttc" id="agenerator_8h_html"><div class="ttname"><a href="generator_8h.html">generator.h</a></div><div class="ttdoc">Random generator for triangle coordinations.</div></div>
 <div class="ttc" id="aintersect_8h_html"><div class="ttname"><a href="intersect_8h.html">intersect.h</a></div><div class="ttdoc">Calculating inversions.</div></div>
-<div class="ttc" id="aintersect_8h_html_a434c1a030b0e3acaf4df97cb2460eced"><div class="ttname"><a href="intersect_8h.html#a434c1a030b0e3acaf4df97cb2460eced">sortPaths_P</a></div><div class="ttdeci">void sortPaths_P(Paths)</div><div class="ttdef"><b>Definition:</b> intersect.c:100</div></div>
+<div class="ttc" id="aintersect_8h_html_a434c1a030b0e3acaf4df97cb2460eced"><div class="ttname"><a href="intersect_8h.html#a434c1a030b0e3acaf4df97cb2460eced">sortPaths_P</a></div><div class="ttdeci">void sortPaths_P(Paths)</div><div class="ttdef"><b>Definition:</b> intersect.c:105</div></div>
 <div class="ttc" id="aintersect_8h_html_a8825e952164dc385de3c4b5074821785"><div class="ttname"><a href="intersect_8h.html#a8825e952164dc385de3c4b5074821785">init_path</a></div><div class="ttdeci">Paths init_path(int len, int p[], int q[], int r[])</div><div class="ttdef"><b>Definition:</b> intersect.c:4</div></div>
-<div class="ttc" id="aintersect_8h_html_ac073207350efd314317ea290c18e830d"><div class="ttname"><a href="intersect_8h.html#ac073207350efd314317ea290c18e830d">kill_path</a></div><div class="ttdeci">void kill_path(Paths)</div><div class="ttdef"><b>Definition:</b> intersect.c:30</div></div>
-<div class="ttc" id="astructPaths_html"><div class="ttname"><a href="structPaths.html">Paths</a></div><div class="ttdef"><b>Definition:</b> intersect.h:20</div></div>
+<div class="ttc" id="aintersect_8h_html_ac073207350efd314317ea290c18e830d"><div class="ttname"><a href="intersect_8h.html#ac073207350efd314317ea290c18e830d">kill_path</a></div><div class="ttdeci">void kill_path(Paths)</div><div class="ttdef"><b>Definition:</b> intersect.c:34</div></div>
+<div class="ttc" id="astructPaths_html"><div class="ttname"><a href="structPaths.html">Paths</a></div><div class="ttdef"><b>Definition:</b> intersect.h:21</div></div>
 <div class="ttc" id="autils_8h_html"><div class="ttname"><a href="utils_8h.html">utils.h</a></div><div class="ttdoc">General Utilities.</div></div>
 </div><!-- fragment --></div><!-- contents -->
 <!-- start footer part -->
