@@ -34,8 +34,7 @@ int main()
         generator.getData(&n, &p, &q, &r);
 
         int ans = get_intersects(n, p, q, r);
-        printf("%d", ans);
-        printf("\n");
+        printf("%d\n", ans);
     }
 
 
