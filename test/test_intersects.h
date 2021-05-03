@@ -111,5 +111,8 @@ void testData(void){
     //Check Answer
     TEST_CHECK(ans==tp.sol);
     TEST_MSG("EST: %d ; REAL: %d", ans, tp.sol);
-
+    
+    free(tp.ps);
+    free(tp.qs);
+    free(tp.rs);
 }
