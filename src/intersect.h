@@ -15,9 +15,9 @@
 #include <stdlib.h>
 #include <assert.h>
 #include <string.h>
-#include <limits.h> // INT_MAX
 #include "utils.h"
 
+#define INT_MAX 2147483647
 
 typedef struct {
   int val;
