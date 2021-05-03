@@ -20,7 +20,7 @@ function getTriangle(PR::IntersectProblem, i::Int)
     return triangle(PR.ps[i], l, r)
 end
 
-function CreateIntersectProblem(length)
+function CreateIntersectProblem(length::Integer)
     ps = rand((-2^20):(2^20-1), length)
     qs = rand((-2^20):(2^20-1), length)
     rs = rand((-2^20):(2^20-1), length)
@@ -63,36 +63,68 @@ function CountIntersects(PR::IntersectProblem)
 end
 
 # Display
+function printList(io, list)
+    for i in eachindex(list)
+        print(io, list[i])
+        if (i < length(list))
+            print(io," ")
+        end
+    end
+    print(io, "\n")
+end
 function PrintProbSol(io, PR::IntersectProblem, sol::Int)
-    println(io, length(PR.ps))
-    println.(io, [PR.ps, PR.qs, PR.rs])
-    println(io,i)
+    #println(io, length(PR.ps))
+    printList(io, PR.ps)
+    printList(io, PR.qs)
+    printList(io, PR.rs)
+
+    print(io,sol)
 end
 
 """
 ARGS=[number_of_problems]
 """
 function main(ARGS)
-    Nfiles = ARGS[1]
+   
+    
+
+    path = ARGS[1]
+
+    len = parse(Int64, ARGS[2])
+
+    Nfiles = parse(Int64, ARGS[3])
 
     file_I = 1
 
     for i in 1:Nfiles
 
-        while(isfile("test/dataGen/$i.in"))
+        # Find undefined name
+        while isfile(joinpath(path, "$file_I.txt"))
             file_I += 1
         end
 
+        file = joinpath(path, "$file_I.txt")
+
         #In/out
-        io = open("test/dataGen/$i.txt", "w")
+        io = open(file, "w")
 
-        PR = CreateIntersectProblem(ARG[1])
-
+        #Create problem
+        PR = CreateIntersectProblem(len)
+        #Solve Problem
         i = CountIntersects(PR)
-
+        
+        # Save to file
         PrintProbSol(io, PR, i)
+
+        #Display
+        println("Create $file")
     end
+
+    @info "Complete $(Nfiles)"
 end
+
+main(ARGS)
+
 
 
 ## Test

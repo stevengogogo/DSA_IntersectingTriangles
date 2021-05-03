@@ -68,3 +68,7 @@ LEAK: TEST
 
 TESTD: BUILD
 	sudo bash ./test/test.sh
+
+
+GenData:
+	sudo bash ./test/genData.sh
