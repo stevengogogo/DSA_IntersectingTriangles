@@ -1,11 +1,11 @@
 <map id="src/main.c" name="src/main.c">
-<area shape="rect" id="node1" title="Get Triangle Intersections with Merge sort." alt="" coords="269,5,351,32"/>
-<area shape="rect" id="node2" title=" " alt="" coords="405,229,465,256"/>
-<area shape="rect" id="node3" title=" " alt="" coords="5,229,68,256"/>
-<area shape="rect" id="node4" href="$intersect_8h.html" title="Calculating inversions." alt="" coords="181,80,263,107"/>
-<area shape="rect" id="node9" href="$generator_8h.html" title="Random generator for triangle coordinations." alt="" coords="323,80,409,107"/>
-<area shape="rect" id="node5" title=" " alt="" coords="155,155,223,181"/>
-<area shape="rect" id="node6" title=" " alt="" coords="334,155,398,181"/>
-<area shape="rect" id="node7" title=" " alt="" coords="247,155,309,181"/>
-<area shape="rect" id="node8" href="$utils_8h.html" title="General Utilities." alt="" coords="74,155,130,181"/>
+<area shape="rect" id="node1" title="Get Triangle Intersections with Merge sort." alt="" coords="134,5,217,32"/>
+<area shape="rect" id="node2" title=" " alt="" coords="32,229,92,256"/>
+<area shape="rect" id="node3" title=" " alt="" coords="384,229,447,256"/>
+<area shape="rect" id="node4" href="$intersect_8h.html" title="Calculating inversions." alt="" coords="216,80,298,107"/>
+<area shape="rect" id="node9" href="$generator_8h.html" title="Random generator for triangle coordinations." alt="" coords="22,155,108,181"/>
+<area shape="rect" id="node5" title=" " alt="" coords="279,229,347,256"/>
+<area shape="rect" id="node6" title=" " alt="" coords="117,229,181,256"/>
+<area shape="rect" id="node7" title=" " alt="" coords="184,155,247,181"/>
+<area shape="rect" id="node8" href="$utils_8h.html" title="General Utilities." alt="" coords="272,155,328,181"/>
 </map>
