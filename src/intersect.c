@@ -40,34 +40,79 @@ void kill_path(Paths pt){
     free(pt.r);
 }
 
-void MERGE_SORT_FIRSTofThree(Paths pt, int p, int r){
+MemMerge3 allocMemMerge3(int len){
+    //Sort Array
+    MemMerge3 temp;
+    temp.L = (int*)malloc((len+1)*sizeof(int));
+    temp.R = (int*)malloc((len+1)*sizeof(int));
+    //Paired Array 1
+    temp.a2_L = (node*)malloc(len*sizeof(node));
+    temp.a2_R = (node*)malloc(len*sizeof(node));
+    //Paired Array 2
+    temp.a3_L = (node*)malloc(len*sizeof(node));
+    temp.a3_R = (node*)malloc(len*sizeof(node));
+
+    assert(temp.L != NULL);
+    assert(temp.R != NULL);
+    assert(temp.a2_L != NULL);
+    assert(temp.a2_R != NULL);
+    assert(temp.a3_L != NULL);
+    assert(temp.a3_R != NULL);
+
+    return temp;
+}
+void kill_MemMerge3(MemMerge3 temp){
+    free(temp.L);
+    free(temp.R);
+    free(temp.a2_L);
+    free(temp.a2_R);
+    free(temp.a3_L);
+    free(temp.a3_R);
+}
+
+MemMergeT allocMemMergeT(int len){
+    MemMergeT temp;
+    temp.Ls_L = (node*)malloc((len+1)*sizeof(node));
+    temp.Ls_R = (node*)malloc((len+1)*sizeof(node));
+    temp.Rs_L = (node*)malloc((len+1)*sizeof(node));
+    temp.Rs_R = (node*)malloc((len+1)*sizeof(node));
+    assert(temp.Ls_L != NULL);
+    assert(temp.Ls_R != NULL);
+    assert(temp.Rs_L != NULL);
+    assert(temp.Rs_R != NULL);
+
+    return temp;
+}
+
+void kill_MemMergeT(MemMergeT temp){
+    free(temp.Ls_L);
+    free(temp.Ls_R);
+    free(temp.Rs_L);
+    free(temp.Rs_R);
+}
+
+void MERGE_SORT_FIRSTofThree(Paths pt, int p, int r, MemMerge3 temp){
     if (p<r){
         int q = (p+r) / 2;
-        MERGE_SORT_FIRSTofThree(pt, p, q);
-        MERGE_SORT_FIRSTofThree(pt, q+1, r);
-        MERGE_FIRSTofThree(pt, p, q, r);
+        MERGE_SORT_FIRSTofThree(pt, p, q, temp);
+        MERGE_SORT_FIRSTofThree(pt, q+1, r, temp);
+        MERGE_FIRSTofThree(pt, p, q, r, temp);
     }
 }
 
-void MERGE_FIRSTofThree(Paths pt, int p, int q, int r){
+void MERGE_FIRSTofThree(Paths pt, int p, int q, int r, MemMerge3 temp){
     int n1 = q - p + 1; // Length of sub-array Left [p,q]
     int n2 = r - (q+1) + 1; // Length of sub-array right (q,r]
 
     //Sort Array
-    int* L = (int*)malloc((n1+1)*sizeof(int));
-    int* R = (int*)malloc((n2+1)*sizeof(int));
+    int* L = temp.L;
+    int* R = temp.R;
     //Paired Array 1
-    node* a2_L = (node*)malloc(n1*sizeof(node));
-    node* a2_R = (node*)malloc(n2*sizeof(node));
+    node* a2_L = temp.a2_L;
+    node* a2_R = temp.a2_R;
     //Paired Array 2
-    node* a3_L = (node*)malloc(n1*sizeof(node));
-    node* a3_R = (node*)malloc(n2*sizeof(node));
-    assert(L!=NULL);
-    assert(R!=NULL);
-    assert(a2_L!=NULL);
-    assert(a2_R!=NULL);
-    assert(a3_L!=NULL);
-    assert(a3_R!=NULL);
+    node* a3_L = temp.a3_L;
+    node* a3_R = temp.a3_R;
 
 
     //Copy left part
@@ -100,33 +145,26 @@ void MERGE_FIRSTofThree(Paths pt, int p, int q, int r){
             ++j;
         }
     }
-
-
-    //Free
-    free(L);
-    free(R);
-    free(a2_R);
-    free(a3_R);
-    free(a2_L);
-    free(a3_L);
 }
 
 void sortPaths_P(Paths pt){
-    MERGE_SORT_FIRSTofThree(pt, 0, pt.len-1);
+    MemMerge3 temp = allocMemMerge3(pt.len);
+    MERGE_SORT_FIRSTofThree(pt, 0, pt.len-1, temp);
+    kill_MemMerge3(temp);
 }
 
-int MERGE_SORT_COUNT_INVERSION(Paths pt, int l, int r){
+int MERGE_SORT_COUNT_INVERSION(Paths pt, int l, int r, MemMergeT temp){
     int inv=0;
     if (l<r){
         int m = (l+r)/2;
-        inv += MERGE_SORT_COUNT_INVERSION(pt, l, m);
-        inv += MERGE_SORT_COUNT_INVERSION(pt, m+1, r);
-        inv += MERGE_COUNT_INVERSION(pt, l, m, r);
+        inv += MERGE_SORT_COUNT_INVERSION(pt, l, m, temp);
+        inv += MERGE_SORT_COUNT_INVERSION(pt, m+1, r, temp);
+        inv += MERGE_COUNT_INVERSION(pt, l, m, r, temp);
     }
     return inv;
 }
 
-int MERGE_COUNT_INVERSION(Paths pt, int l, int m, int r){
+int MERGE_COUNT_INVERSION(Paths pt, int l, int m, int r, MemMergeT temp){
 
     //Count inversion
     int count = m+1;
@@ -180,14 +218,11 @@ int MERGE_COUNT_INVERSION(Paths pt, int l, int m, int r){
     int n2 = r - (m+1) + 1;
 
     // Sort Array
-    node* Ls_L = (node*)malloc((n1+1)*sizeof(node) );
-    node* Ls_R = (node*)malloc((n2+1)*sizeof(node) );
-    node* Rs_L = (node*)malloc((n1+1)*sizeof(node) );
-    node* Rs_R = (node*)malloc((n2+1)*sizeof(node) );   
-    assert(Ls_L != NULL);
-    assert(Ls_R != NULL);
-    assert(Rs_L != NULL);
-    assert(Rs_R != NULL);
+    node* Ls_L = temp.Ls_L;
+    node* Ls_R = temp.Ls_R;
+    node* Rs_L = temp.Rs_L;
+    node* Rs_R = temp.Rs_R;   
+
 
     //Copy left part
     copyNode(Ls_L, pt.l, l, m+1);
@@ -229,12 +264,6 @@ int MERGE_COUNT_INVERSION(Paths pt, int l, int m, int r){
         }
     }
 
-    //Free
-    free(Ls_L);
-    free(Ls_R);
-    free(Rs_L);
-    free(Rs_R);
-
     return inv;
 }
 
@@ -242,7 +271,11 @@ int MERGE_COUNT_INVERSION(Paths pt, int l, int m, int r){
 int get_intersects(int n, int* p, int* q, int* r){
     Paths pt = init_path(n,p,q,r);
     sortPaths_P(pt);
-    int inv = MERGE_SORT_COUNT_INVERSION(pt, 0, pt.len-1);
+
+    MemMergeT temp = allocMemMergeT(pt.len);
+    int inv = MERGE_SORT_COUNT_INVERSION(pt, 0, pt.len-1, temp);
+    
+    kill_MemMergeT(temp);
     kill_path(pt);
     return inv;
 }

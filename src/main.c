@@ -17,7 +17,7 @@
 int main()
 {
     
-   
+
     //Initiate
     /*
     TriProb tp = ParseData("test/dataGen/2.txt");
