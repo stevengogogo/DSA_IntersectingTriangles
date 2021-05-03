@@ -153,9 +153,9 @@ int MERGE_COUNT_INVERSION(Paths pt, int l, int m, int r){
         //Sum up
         inv +=  (count - (m + 1));
 
-        if(pt.r[k].p == isSame.p)
+        if(pt.r[k].p == isSame.p && isSame.val==1){
              inv += Iden;
-        
+        }
     }
 
 

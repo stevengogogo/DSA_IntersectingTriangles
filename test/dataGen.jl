@@ -21,9 +21,9 @@ function getTriangle(PR::IntersectProblem, i::Int)
 end
 
 function CreateIntersectProblem(length::Integer)
-    ps = rand((-10):(10), length)
-    qs = rand((-10):(10), length)
-    rs = rand((-10):(10), length)
+    ps = rand((-100):(100), length)
+    qs = rand((-100):(100), length)
+    rs = rand((-100):(100), length)
 
     return IntersectProblem(ps,qs,rs)
 end
