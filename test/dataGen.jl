@@ -21,9 +21,9 @@ function getTriangle(PR::IntersectProblem, i::Int)
 end
 
 function CreateIntersectProblem(length::Integer)
-    ps = rand((-2^20):(2^20-1), length)
-    qs = rand((-2^20):(2^20-1), length)
-    rs = rand((-2^20):(2^20-1), length)
+    ps = rand((-10):(10), length)
+    qs = rand((-10):(10), length)
+    rs = rand((-10):(10), length)
 
     return IntersectProblem(ps,qs,rs)
 end
@@ -94,14 +94,14 @@ function main(ARGS)
 
     Nfiles = parse(Int64, ARGS[3])
 
-    file_I = 1
+    file_I = 2
 
     for i in 1:Nfiles
 
         # Find undefined name
-        while isfile(joinpath(path, "$file_I.txt"))
-            file_I += 1
-        end
+        #while isfile(joinpath(path, "$file_I.txt"))
+            #file_I += 1
+        #end
 
         file = joinpath(path, "$file_I.txt")
 

@@ -1,8 +1,9 @@
 #include "intersect.h"
 #include "generator.h"
 #include "utils.h"
-
-
+#include <stdio.h>
+#include <stdlib.h>
+#include <string.h>
 
 void load_data(void){
     int n = 10;
@@ -81,4 +82,31 @@ void load_data(void){
 
     //Kill
     kill_path(pt);
+}
+
+
+void testParseData(void){
+    TriProb tp = ParseData("test/dataGen/1.txt");
+
+    TEST_CHECK(tp.n == 10);
+    TEST_CHECK(tp.ps[0] == -8093);
+    TEST_CHECK(tp.qs[0] == -275254);
+    TEST_CHECK(tp.rs[0] == -1008876);
+    TEST_CHECK(tp.sol == 37);
+}
+
+void testData(void){
+    
+    char filepath[]="test/dataGen/2.txt";
+
+
+    TriProb tp = ParseData(filepath);
+
+    //Solve Problem
+    int ans = get_intersects(tp.n, tp.ps, tp.qs, tp.rs);
+
+    //Check Answer
+    TEST_CHECK(ans==tp.sol);
+    TEST_MSG("EST: %d ; REAL: %d", ans, tp.sol);
+
 }
