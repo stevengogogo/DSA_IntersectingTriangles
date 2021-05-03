@@ -35,9 +35,7 @@ int main()
 
         int ans = get_intersects(n, p, q, r);
         printf("%d", ans);
-        if(i!= t-1){
-            printf("\n");
-        }
+        printf("\n");
     }
 
 

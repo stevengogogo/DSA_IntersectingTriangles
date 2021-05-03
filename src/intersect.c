@@ -174,7 +174,7 @@ int MERGE_COUNT_INVERSION(Paths pt, int l, int m, int r, MemMergeT temp){
     node isSame;
     isSame.val = 0;
     isSame.p = INT_MAX;
-    int Iden = 0; 
+    int Iden = 0; //Identical Ps on the right
     int IdenSite = m+1;
     if(pt.p[m]==pt.p[m+1]){
         isSame.val=1;//Same item true
