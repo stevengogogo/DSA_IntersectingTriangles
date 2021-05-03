@@ -9,6 +9,7 @@ void load_data(void){
     int p[] = {-5, 15, 15, -8, -11, -5, -13, -14, 15, 10};
     int q[] = {-7, -12, -4, -13, 5, 1, 14, -16, -16, -14};
     int r[] = {2, -13, 1, 9, 9, 1, 1, 12, -15, 6};
+
     
     //Initiate
     Paths pt = init_path(n,p,q,r);
@@ -47,6 +48,7 @@ void load_data(void){
     TEST_CHECK(pt.l[4] == -7);
     TEST_CHECK(pt.r[4] == 2);
 
+    /*
     printf("\n");
     for(int i=0;i<10;i++){
         printf("%d\t", pt.p[i]);
@@ -60,6 +62,7 @@ void load_data(void){
         printf("%d\t", pt.r[i]);
     }
     printf("\n");
+    */
 
     MERGE_SORT_COUNT_INVERSION(pt, pt.p, pt.l, pt.r, 0, pt.len-1);
     TEST_CHECK(pt.p[0] == -14);
@@ -67,12 +70,14 @@ void load_data(void){
     TEST_CHECK(pt.r[0] == -15);
 
     TEST_CHECK(pt.p[9] == 15);
-    TEST_CHECK(pt.l[9] == 12);
+    TEST_CHECK(pt.l[9] == 5);
     TEST_MSG("Got %d",pt.l[9]);
 
+    /*
     for(int i=0;i<10;i++){
         printf("%d ", pt.l[i]);
     }
+    */
 
     TEST_CHECK(pt.r[9] == 14);
     TEST_MSG("Got %d",pt.r[9]);
