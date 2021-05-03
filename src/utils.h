@@ -25,6 +25,7 @@ int argmax(int n0, int n1);
 
 void swap(int* a, int *b);
 
+int ChooseMax(int a, int b);
 
 
 #endif

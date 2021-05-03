@@ -124,6 +124,8 @@ int MERGE_COUNT_INVERSION(Paths pt, int l, int m, int r){
     //Same Item
     node isSame;
     isSame.val = 0;
+    int Iden = 0; 
+    int IdenSite = m+1;
     if(pt.p[m]==pt.p[m+1]){
         isSame.val=1;//Same item true
         isSame.p = pt.p[m]; // value of identical p
@@ -138,7 +140,15 @@ int MERGE_COUNT_INVERSION(Paths pt, int l, int m, int r){
         //Calcuate missing identical P not included
         if (isSame.val){
             if(pt.r[k].val == isSame.p){
-                
+                IdenSite = ChooseMax(IdenSite, count); // >= count
+                while(IdenSite<=r){
+                    if(pt.l[IdenSite].p == isSame.val){ //l from same p
+                        if(pt.l[IdenSite].val > pt.r[k].val)
+                            ++Iden;
+                        else
+                    }
+                    ++IdenSite;
+                }
             }
         }
 
