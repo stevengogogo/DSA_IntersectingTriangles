@@ -19,13 +19,13 @@ int main()
     
    
     //Initiate
-    
+    /*
     TriProb tp = ParseData("test/dataGen/2.txt");
     int ans = get_intersects(tp.n, tp.ps, tp.qs, tp.rs);
-    printf("%d/n",ans);
+    printf("%d\n",ans);
+    */
 
-
-   /* Interface
+   // Interface
     generator.init();
     int t = generator.getT();
 
@@ -39,7 +39,7 @@ int main()
             printf("\n");
         }
     }
-    */
+
 
     return 0;
 }
