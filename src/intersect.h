@@ -32,6 +32,22 @@ typedef struct {
 } Paths;
 
 
+typedef struct {
+  int* L;
+  int* R;
+  node* a2_L;
+  node* a2_R;
+  node* a3_L;
+  node* a3_R;
+} MemMerge3;
+
+typedef struct {
+  node* Ls_L;
+  node* Ls_R;
+  node* Rs_L;
+  node* Rs_R;
+} MemMergeT;
+
 /** Create path struct. where 'r' is max(q,r) / 'l' is the other. 
  * @note Arrays are copied and saved in heap. Use @ref kill_path to recycle the memory
 */
@@ -39,6 +55,13 @@ Paths init_path(int len, int p[], int q[], int r[]);
 /** Free arrays of the Struct @ref Paths */
 void kill_path(Paths);
 
+
+
+MemMerge3 allocMemMerge3(int len);
+void kill_MemMerge3(MemMerge3);
+
+MemMergeT allocMemMergeT(int len);
+void kill_MemMergeT(MemMergeT);
 
 /** @brief Merge Sort first array along with 3 arrays. Increasing order
  * @param A array to be sorted
@@ -48,9 +71,9 @@ void kill_path(Paths);
  * @param r right start index
  * @note Ref: Chapter 4. CLRS
  */
-void MERGE_SORT_FIRSTofThree(Paths pt, int p, int r);
+void MERGE_SORT_FIRSTofThree(Paths pt, int p, int r, MemMerge3);
 /** Merge process of @ref MERGE_SORT_FIRSTofThree */
-void MERGE_FIRSTofThree(Paths pt, int p, int q, int r);
+void MERGE_FIRSTofThree(Paths pt, int p, int q, int r, MemMerge3);
 
 /** Merge sort and total count inversions
  * @param Ps monotonous increasing 
@@ -63,8 +86,8 @@ void MERGE_FIRSTofThree(Paths pt, int p, int q, int r);
  * 1. https://www.csie.ntu.edu.tw/~sprout/algo2016/ppt_pdf/divide_and_conquer.pdf
  * 2. https://www.geeksforgeeks.org/counting-inversions/
 */
-int MERGE_SORT_COUNT_INVERSION(Paths pt,int l, int r);
-int MERGE_COUNT_INVERSION(Paths pt, int l, int q, int r);
+int MERGE_SORT_COUNT_INVERSION(Paths pt,int l, int r, MemMergeT);
+int MERGE_COUNT_INVERSION(Paths pt, int l, int q, int r, MemMergeT);
 
 /** Sort ps in paths. `Paths.l` and `Path.r` will keep paired with `Paths.p`. Refer to @ref Paths*/
 void sortPaths_P(Paths);

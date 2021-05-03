@@ -62,7 +62,9 @@ void load_data(void){
     printf("\n");
     */
 
-    MERGE_SORT_COUNT_INVERSION(pt, 0, pt.len-1);
+    MemMergeT temp = allocMemMergeT(pt.len);
+    int inv = MERGE_SORT_COUNT_INVERSION(pt, 0, pt.len-1, temp);
+
     TEST_CHECK(pt.p[0] == -14);
     TEST_CHECK(pt.l[0].val == -16);
     TEST_CHECK(pt.r[0].val == -15);
@@ -81,6 +83,7 @@ void load_data(void){
     TEST_MSG("Got %d",pt.r[9].val);
 
     //Kill
+    kill_MemMergeT(temp);
     kill_path(pt);
 }
 
