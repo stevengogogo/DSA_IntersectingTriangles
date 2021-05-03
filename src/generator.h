@@ -1,3 +1,9 @@
+/**
+ * @file generator.h
+ * @author CSIE DSA Team (dsa@ntu.csie.com)
+ * @brief Random generator for triangle coordinations 
+ * @note Reference: https://www.csie.ntu.edu.tw/~giver/DSA/hw2/generator.h
+ */
 #ifndef _PROB45_GENERATOR
 #define _PROB45_GENERATOR
 #include<stdio.h>
