@@ -70,6 +70,10 @@ TriProb ParseData(char* filePath){
 
     fclose(fp);
 
+    free(tp.ps);
+    free(tp.qs);
+    free(tp.rs);
+
     return tp;
 }
 
