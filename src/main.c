@@ -30,7 +30,7 @@ int main()
     MERGE_SORT_FIRSTofThree(pt.p, pt.l, pt.r, 0, pt.len-1);
     */
 
-
+   
     generator.init();
     int t = generator.getT();
 

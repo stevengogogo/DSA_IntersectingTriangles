@@ -13,6 +13,16 @@
 
 #include <stdio.h>
 #include <stdlib.h>
+#include <assert.h>
+#include <string.h>
+
+typedef struct {
+    int n;
+    int sol;
+    int* ps;
+    int* qs;
+    int* rs;
+} TriProb;
 
 int* init_arr(int len);
 void kill_arr(int*);
@@ -27,5 +37,8 @@ void swap(int* a, int *b);
 
 int ChooseMax(int a, int b);
 
+TriProb ParseData(char* filePath);
 
+
+void int2str(int , char *);
 #endif

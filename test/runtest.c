@@ -12,5 +12,7 @@
 TEST_LIST = {
     {"Utility", test_utils},
     {"load data", load_data},
+    {"test parsing", testParseData},
+    {"test Data", testData},
     {NULL, NULL} // Terminate the test
 };

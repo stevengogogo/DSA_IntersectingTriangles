@@ -37,3 +37,42 @@ int ChooseMax(int a, int b){
     else 
         return b;
 }
+
+TriProb ParseData(char* filePath){
+    FILE *fp;
+    TriProb tp;
+
+    fp = fopen(filePath, "r");
+    assert(fp!=NULL);
+
+    //Get length
+    fscanf(fp, "%d", &tp.n); 
+
+    tp.ps = (int*)malloc(tp.n*sizeof(int));
+    tp.qs = (int*)malloc(tp.n*sizeof(int));
+    tp.rs = (int*)malloc(tp.n*sizeof(int));
+
+    for(int i=0;i<tp.n;i++){
+        fscanf(fp, "%d", &tp.ps[i]); 
+    }
+
+    for(int i=0;i<tp.n;i++){
+        fscanf(fp, "%d", &tp.qs[i]); 
+    }
+
+    for(int i=0;i<tp.n;i++){
+        fscanf(fp, "%d", &tp.rs[i]); 
+    }
+
+    //Get Solution
+    fscanf(fp, "%d", &tp.sol); 
+
+
+    fclose(fp);
+
+    return tp;
+}
+
+void int2str(int i, char *s) {
+  sprintf(s,"%d",i);
+}
