@@ -160,7 +160,7 @@ int MERGE_COUNT_INVERSION(Paths pt,int* Ps, int* Ls, int* Rs, int l, int m, int 
         samePnoCross = nPL * nPR; 
     }
 
-    inv+= samePnoCross;
+    inv += samePnoCross;
 
 
     //Finish sorting
