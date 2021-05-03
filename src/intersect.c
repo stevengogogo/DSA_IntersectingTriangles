@@ -135,6 +135,7 @@ int MERGE_COUNT_INVERSION(Paths pt, int l, int m, int r){
     //Same Item
     node isSame;
     isSame.val = 0;
+    isSame.p = INT_MAX;
     int Iden = 0; 
     int IdenSite = m+1;
     if(pt.p[m]==pt.p[m+1]){
