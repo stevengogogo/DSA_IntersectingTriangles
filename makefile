@@ -24,6 +24,10 @@ BUILD:
 	$(CC) -o $(build_folder)/main.out $(src_folder)/*.c
 	echo "$(green)Built and deploy at $(mag) $(build_folder)/$(outfile)$(reset)";
 
+BUILDPKG:
+	mkdir -p  $(build_folder)
+	gcc -fPIC $(build_folder)/main.out $(src_folder)/*.c
+
 MERGETEST:
 	mkdir -p test_TEMP 
 	mkdir -p $(testbuild) 
@@ -64,3 +68,7 @@ LEAK: TEST
 
 TESTD: BUILD
 	sudo bash ./test/test.sh
+
+
+GenData:
+	sudo bash ./test/genData.sh
