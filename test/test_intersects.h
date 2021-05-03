@@ -18,39 +18,32 @@ void load_data(void){
         TEST_CHECK(pt.p[i] == p[i]);
         
         if (q[i] > r[i]){
-            TEST_CHECK(pt.r[i] == q[i]);
-            TEST_CHECK(pt.l[i] == r[i]);
+            TEST_CHECK(pt.r[i].val == q[i]);
+            TEST_CHECK(pt.l[i].val == r[i]);
         }
         else{
-            TEST_CHECK(pt.r[i] == r[i]);
-            TEST_CHECK(pt.l[i] == q[i]);
+            TEST_CHECK(pt.r[i].val == r[i]);
+            TEST_CHECK(pt.l[i].val == q[i]);
         }
     }
 
 
-    for(int i=0;i<n;i++){
-        TEST_CHECK(pt.l[i]==pt.l_[i]);
-        TEST_MSG("%d != %d",pt.l[i],pt.l_[i]);
-    }
 
     sortPaths_P(pt);    
 
-    for(int i=0;i<pt.len;i++){
-        TEST_CHECK(pt.l[i]==pt.l_[i]);
-    }
 
     TEST_CHECK(pt.p[0] == -14);
-    TEST_CHECK(pt.l[0] == -16);
-    TEST_CHECK(pt.r[0] == 12);
+    TEST_CHECK(pt.l[0].val == -16);
+    TEST_CHECK(pt.r[0].val == 12);
 
     TEST_CHECK(pt.p[9] == 15);
-    TEST_CHECK(pt.l[9] == -16);
-    TEST_CHECK(pt.r[9] == -15);
-    TEST_MSG("Got %d",pt.l[9]);
+    TEST_CHECK(pt.l[9].val == -16);
+    TEST_CHECK(pt.r[9].val == -15);
+    TEST_MSG("Got %d",pt.l[9].val);
 
     TEST_CHECK(pt.p[4] == -5);
-    TEST_CHECK(pt.l[4] == -7);
-    TEST_CHECK(pt.r[4] == 2);
+    TEST_CHECK(pt.l[4].val == -7);
+    TEST_CHECK(pt.r[4].val == 2);
 
     /*
     printf("\n");
@@ -59,32 +52,32 @@ void load_data(void){
     }
     printf("\n");
     for(int i=0;i<10;i++){
-        printf("%d\t", pt.l[i]);
+        printf("%d\t", pt.l[i].val);
     }
     printf("\n");
     for(int i=0;i<10;i++){
-        printf("%d\t", pt.r[i]);
+        printf("%d\t", pt.r[i].val);
     }
     printf("\n");
     */
 
-    MERGE_SORT_COUNT_INVERSION(pt, pt.p, pt.l, pt.r, 0, pt.len-1);
+    MERGE_SORT_COUNT_INVERSION(pt, 0, pt.len-1);
     TEST_CHECK(pt.p[0] == -14);
-    TEST_CHECK(pt.l[0] == -16);
-    TEST_CHECK(pt.r[0] == -15);
+    TEST_CHECK(pt.l[0].val == -16);
+    TEST_CHECK(pt.r[0].val == -15);
 
     TEST_CHECK(pt.p[9] == 15);
-    TEST_CHECK(pt.l[9] == 5);
-    TEST_MSG("Got %d",pt.l[9]);
+    TEST_CHECK(pt.l[9].val == 5);
+    TEST_MSG("Got %d",pt.l[9].val);
 
     /*
     for(int i=0;i<10;i++){
-        printf("%d ", pt.l[i]);
+        printf("%d ", pt.l[i].val);
     }
     */
 
-    TEST_CHECK(pt.r[9] == 14);
-    TEST_MSG("Got %d",pt.r[9]);
+    TEST_CHECK(pt.r[9].val == 14);
+    TEST_MSG("Got %d",pt.r[9].val);
 
     //Kill
     kill_path(pt);
