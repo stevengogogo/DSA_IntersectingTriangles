@@ -96,27 +96,17 @@ void testParseData(void){
 }
 
 void testData(void){
-    char fileDir[] = "test/dataGen/";
-    char filepath[1000];
-    char format[] = ".txt";
-    char num[100];
-    for(int i=0;i<13;i++){
-        filepath[0] = '\0';
-        //Get filename
-        strcpy(filepath, fileDir);
-        int2str(i, num);
-        strcat(filepath, num);
-        strcat(filepath, format);
+    
+    char filepath[]="test/dataGen/2.txt";
 
-        //Get data
-        printf("%s/n", fileDir);
-        TriProb tp = ParseData(filepath);
 
-        //Solve Problem
-        int ans = get_intersects(tp.n, tp.ps, tp.qs, tp.rs);
+    TriProb tp = ParseData(filepath);
 
-        //Check Answer
-        TEST_CHECK(ans==tp.sol);
-        TEST_MSG("EST: %d ; REAL: %d (File ID:%d)", ans, tp.sol, i);
-    }
+    //Solve Problem
+    int ans = get_intersects(tp.n, tp.ps, tp.qs, tp.rs);
+
+    //Check Answer
+    TEST_CHECK(ans==tp.sol);
+    TEST_MSG("EST: %d ; REAL: %d", ans, tp.sol);
+
 }
