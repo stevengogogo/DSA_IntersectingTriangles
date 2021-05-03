@@ -104,6 +104,7 @@ void MERGE_FIRSTofThree(int* A, int* a2, int* a3, int p, int q, int r){
 
 void sortPaths_P(Paths pt){
     MERGE_SORT_FIRSTofThree(pt.p, pt.l, pt.r, 0, pt.len-1);
+    memcpy(pt.l_, pt.l, pt.len*sizeof(int));
 }
 
 int MERGE_SORT_COUNT_INVERSION(Paths pt,int* Ps, int* Ls, int* Rs,int l, int r){

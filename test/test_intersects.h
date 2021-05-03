@@ -35,6 +35,10 @@ void load_data(void){
 
     sortPaths_P(pt);    
 
+    for(int i=0;i<pt.len;i++){
+        TEST_CHECK(pt.l[i]==pt.l_[i]);
+    }
+
     TEST_CHECK(pt.p[0] == -14);
     TEST_CHECK(pt.l[0] == -16);
     TEST_CHECK(pt.r[0] == 12);
