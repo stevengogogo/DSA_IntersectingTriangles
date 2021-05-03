@@ -73,7 +73,7 @@ function printList(io, list)
     print(io, "\n")
 end
 function PrintProbSol(io, PR::IntersectProblem, sol::Int)
-    #println(io, length(PR.ps))
+    println(io, length(PR.ps))
     printList(io, PR.ps)
     printList(io, PR.qs)
     printList(io, PR.rs)
