@@ -30,3 +30,10 @@ void swap(int* a, int *b){
     *a = *b;
     *b = tmp;
 }
+
+int ChooseMax(int a, int b){
+    if (a>b)
+        return a;
+    else 
+        return b;
+}
