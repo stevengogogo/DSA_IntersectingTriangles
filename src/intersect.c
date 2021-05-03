@@ -12,6 +12,10 @@ Paths init_path(int len, int p[], int q[], int r[]){
     pt.l = (node*)malloc(arrSizeN);
     pt.r = (node*)malloc(arrSizeN);
 
+    assert(pt.p!=NULL);
+    assert(pt.l!=NULL);
+    assert(pt.r!=NULL);
+
     // Copy P
     copy_arr(pt.p, p, 0, len);
 
@@ -50,14 +54,21 @@ void MERGE_FIRSTofThree(Paths pt, int p, int q, int r){
     int n2 = r - (q+1) + 1; // Length of sub-array right (q,r]
 
     //Sort Array
-    int* L = (int*)malloc(n1*sizeof(int) + 1);
-    int* R = (int*)malloc(n2*sizeof(int) + 1);
+    int* L = (int*)malloc((n1+1)*sizeof(int));
+    int* R = (int*)malloc((n2+1)*sizeof(int));
     //Paired Array 1
     node* a2_L = (node*)malloc(n1*sizeof(node));
     node* a2_R = (node*)malloc(n2*sizeof(node));
     //Paired Array 2
     node* a3_L = (node*)malloc(n1*sizeof(node));
     node* a3_R = (node*)malloc(n2*sizeof(node));
+    assert(L!=NULL);
+    assert(R!=NULL);
+    assert(a2_L!=NULL);
+    assert(a2_R!=NULL);
+    assert(a3_L!=NULL);
+    assert(a3_R!=NULL);
+
 
     //Copy left part
     copy_arr(L, pt.p, p, q+1);
@@ -130,9 +141,12 @@ int MERGE_COUNT_INVERSION(Paths pt, int l, int m, int r){
         isSame.val=1;//Same item true
         isSame.p = pt.p[m]; // value of identical p
         //Number of Same Ps
-        while(pt.p[m] == pt.p[IdenSite] && IdenSite <= r){
+        while(IdenSite <= r && pt.p[m] == pt.p[IdenSite] ){
             ++Iden;
             ++IdenSite;
+            
+            if (IdenSite > r)//avoid segmenetation fault
+                break;
         }
     }
 
@@ -165,10 +179,14 @@ int MERGE_COUNT_INVERSION(Paths pt, int l, int m, int r){
     int n2 = r - (m+1) + 1;
 
     // Sort Array
-    node* Ls_L = (node*)malloc(n1*sizeof(node) + 1);
-    node* Ls_R = (node*)malloc(n2*sizeof(node) + 1);
-    node* Rs_L = (node*)malloc(n1*sizeof(node) + 1);
-    node* Rs_R = (node*)malloc(n2*sizeof(node) + 1);   
+    node* Ls_L = (node*)malloc((n1+1)*sizeof(node) );
+    node* Ls_R = (node*)malloc((n2+1)*sizeof(node) );
+    node* Rs_L = (node*)malloc((n1+1)*sizeof(node) );
+    node* Rs_R = (node*)malloc((n2+1)*sizeof(node) );   
+    assert(Ls_L != NULL);
+    assert(Ls_R != NULL);
+    assert(Rs_L != NULL);
+    assert(Rs_R != NULL);
 
     //Copy left part
     copyNode(Ls_L, pt.l, l, m+1);
