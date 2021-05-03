@@ -121,21 +121,32 @@ int MERGE_COUNT_INVERSION(Paths pt, int l, int m, int r){
     int count = m+1;
     int inv = 0;
 
+    //Same Item
+    node isSame;
+    isSame.val = 0;
+    if(pt.p[m]==pt.p[m+1]){
+        isSame.val=1;//Same item true
+        isSame.p = pt.p[m]; // value of identical p
+    }
+
     for (int k=l;k<=m;k++){
         //Find Max{left} > Min{right}
         while(count <= r && pt.r[k].val >= pt.l[count].val){
             ++count;
         }
 
+        //Calcuate missing identical P not included
+        if (isSame.val){
+            if(pt.r[k].val == isSame.p){
+                
+            }
+        }
+
         //Sum up
         inv = inv + (count - (m + 1));
     }
 
-    //Find Identical Ps
 
-    /********
-    ToDo
-    *********/
 
     //Finish sorting
     int n1 = m - l + 1;
@@ -159,7 +170,7 @@ int MERGE_COUNT_INVERSION(Paths pt, int l, int m, int r){
     Rs_L[n1].val = INT_MAX;
     Ls_R[n2].val = INT_MAX;
     Rs_R[n2].val = INT_MAX;
-    
+
     int Li = 0;
     int Lj = 0;
     int Ri = 0;
