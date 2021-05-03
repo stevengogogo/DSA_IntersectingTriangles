@@ -129,31 +129,29 @@ int MERGE_COUNT_INVERSION(Paths pt, int l, int m, int r){
     if(pt.p[m]==pt.p[m+1]){
         isSame.val=1;//Same item true
         isSame.p = pt.p[m]; // value of identical p
+        //Number of Same Ps
+        while(pt.p[m] == pt.p[IdenSite] && IdenSite <= r){
+            ++Iden;
+            ++IdenSite;
+        }
     }
+
 
     for (int k=l;k<=m;k++){
         //Find Max{left} > Min{right}
         while(count <= r && pt.r[k].val >= pt.l[count].val){
+            //Rule out counted identical P
+            if(isSame.val){
+                if(isSame.p == pt.l[count].p){ //included p
+                    --Iden;
+                }
+            }
+
             ++count;
         }
 
-        //Calcuate missing identical P not included
-        if (isSame.val){
-            if(pt.r[k].val == isSame.p){
-                IdenSite = ChooseMax(IdenSite, count); // >= count
-                while(IdenSite<=r){
-                    if(pt.l[IdenSite].p == isSame.val){ //l from same p
-                        if(pt.l[IdenSite].val > pt.r[k].val)
-                            ++Iden;
-                        else
-                    }
-                    ++IdenSite;
-                }
-            }
-        }
-
         //Sum up
-        inv = inv + (count - (m + 1));
+        inv = inv + (count - (m + 1)) + Iden;
     }
 
 
