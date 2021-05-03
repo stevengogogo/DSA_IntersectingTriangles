@@ -159,6 +159,7 @@ int MERGE_COUNT_INVERSION(Paths pt, int l, int m, int r){
     Rs_L[n1].val = INT_MAX;
     Ls_R[n2].val = INT_MAX;
     Rs_R[n2].val = INT_MAX;
+    
     int Li = 0;
     int Lj = 0;
     int Ri = 0;
