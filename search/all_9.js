@@ -1,4 +1,4 @@
 var searchData=
 [
-  ['triprob_15',['TriProb',['../structTriProb.html',1,'']]]
+  ['triprob_17',['TriProb',['../structTriProb.html',1,'']]]
 ];
