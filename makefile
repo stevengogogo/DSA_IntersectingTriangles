@@ -63,8 +63,8 @@ MERGE_MAIN:
 	$(CCm) $(src_folder)/main.c  build/main.c
 	$(CC) -o build/main_test_build.out build/main.c
 
-LEAK: TEST
-	valgrind --leak-check=full --show-leak-kinds=all --verbose ./test/build/test.out
+LEAK:
+	valgrind  ./build/main.out < test/data/4.in
 
 TESTD: BUILD
 	sudo bash ./test/test.sh
