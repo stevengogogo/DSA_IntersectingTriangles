@@ -1,7 +1,7 @@
 #include "intersect.h"
 
 
-Paths init_path(int len, int p[], int q[], int r[]){
+Paths init_path(int len, int p_[], int q_[], int r_[]){
     
 
     Paths pt;
@@ -17,13 +17,13 @@ Paths init_path(int len, int p[], int q[], int r[]){
     assert(pt.r!=NULL);
 
     // Copy P
-    copy_arr(pt.p, p, 0, len);
+    copy_arr(pt.p, p_, 0, len);
 
     // Copy l , r (l<=r)
     node L, R;  
     for(int i=0;i<len;i++){
-        L.val = q[i]; R.val = r[i];
-        L.p = p[i]; R.p = p[i];
+        L.val = q_[i]; R.val = r_[i];
+        L.p = p_[i]; R.p = p_[i];
         if (L.val>R.val){
             swapNode(&L, &R);
         }
@@ -91,18 +91,18 @@ void kill_MemMergeT(MemMergeT temp){
     free(temp.Rs_R);
 }
 
-void MERGE_SORT_FIRSTofThree(Paths pt, int p, int r, MemMerge3 temp){
-    if (p<r){
-        int q = (p+r) / 2;
-        MERGE_SORT_FIRSTofThree(pt, p, q, temp);
-        MERGE_SORT_FIRSTofThree(pt, q+1, r, temp);
-        MERGE_FIRSTofThree(pt, p, q, r, temp);
+void MERGE_SORT_FIRSTofThree(Paths pt, int p_, int r_, MemMerge3 temp){
+    if (p_<r_){
+        int q_ = (p_+r_) / 2;
+        MERGE_SORT_FIRSTofThree(pt, p_, q_, temp);
+        MERGE_SORT_FIRSTofThree(pt, q_+1, r_, temp);
+        MERGE_FIRSTofThree(pt, p_, q_, r_, temp);
     }
 }
 
-void MERGE_FIRSTofThree(Paths pt, int p, int q, int r, MemMerge3 temp){
-    int n1 = q - p + 1; // Length of sub-array Left [p,q]
-    int n2 = r - (q+1) + 1; // Length of sub-array right (q,r]
+void MERGE_FIRSTofThree(Paths pt, int p_, int q_, int r_, MemMerge3 temp){
+    int n1 = q_ - p_ + 1; // Length of sub-array Left [p,q]
+    int n2 = r_ - (q_+1) + 1; // Length of sub-array right (q,r]
 
     //Sort Array
     int* L = temp.L;
@@ -116,13 +116,13 @@ void MERGE_FIRSTofThree(Paths pt, int p, int q, int r, MemMerge3 temp){
 
 
     //Copy left part
-    copy_arr(L, pt.p, p, q+1);
-    copyNode(a2_L, pt.l, p, q+1);
-    copyNode(a3_L, pt.r, p, q+1);
+    copy_arr(L, pt.p, p_, q_+1);
+    copyNode(a2_L, pt.l, p_, q_+1);
+    copyNode(a3_L, pt.r, p_, q_+1);
     //Copy right part
-    copy_arr(R, pt.p, q+1, r+1);
-    copyNode(a2_R, pt.l, q+1, r+1);
-    copyNode(a3_R, pt.r, q+1, r+1);
+    copy_arr(R, pt.p, q_+1, r_+1);
+    copyNode(a2_R, pt.l, q_+1, r_+1);
+    copyNode(a3_R, pt.r, q_+1, r_+1);
 
     //Sentinel
     L[n1] = INT_MAX;
@@ -131,7 +131,7 @@ void MERGE_FIRSTofThree(Paths pt, int p, int q, int r, MemMerge3 temp){
     //Dispatch
     int i = 0;
     int j = 0;
-    for(int k=p; k<=r;k++){ //from [p,r]
+    for(int k=p_; k<=r_;k++){ //from [p,r]
         if(L[i] <= R[j]){
             pt.p[k] = L[i];
             pt.l[k] = a2_L[i];
@@ -153,18 +153,18 @@ void sortPaths_P(Paths pt){
     kill_MemMerge3(temp);
 }
 
-int MERGE_SORT_COUNT_INVERSION(Paths pt, int l, int r, MemMergeT temp){
+int MERGE_SORT_COUNT_INVERSION(Paths pt, int l_, int r_, MemMergeT temp){
     int inv=0;
-    if (l<r){
-        int m = (l+r)/2;
-        inv += MERGE_SORT_COUNT_INVERSION(pt, l, m, temp);
-        inv += MERGE_SORT_COUNT_INVERSION(pt, m+1, r, temp);
-        inv += MERGE_COUNT_INVERSION(pt, l, m, r, temp);
+    if (l_<r_){
+        int m = (l_+r_)/2;
+        inv += MERGE_SORT_COUNT_INVERSION(pt, l_, m, temp);
+        inv += MERGE_SORT_COUNT_INVERSION(pt, m+1, r_, temp);
+        inv += MERGE_COUNT_INVERSION(pt, l_, m, r_, temp);
     }
     return inv;
 }
 
-int MERGE_COUNT_INVERSION(Paths pt, int l, int m, int r, MemMergeT temp){
+int MERGE_COUNT_INVERSION(Paths pt, int l_, int m, int r_, MemMergeT temp){
 
     //Count inversion
     int count = m+1;
@@ -180,19 +180,19 @@ int MERGE_COUNT_INVERSION(Paths pt, int l, int m, int r, MemMergeT temp){
         isSame.val=1;//Same item true
         isSame.p = pt.p[m]; // value of identical p
         //Number of Same Ps
-        while(IdenSite <= r && pt.p[m] == pt.p[IdenSite] ){
+        while(IdenSite <= r_ && pt.p[m] == pt.p[IdenSite] ){
             ++Iden;
             ++IdenSite;
             
-            if (IdenSite > r)//avoid segmenetation fault
+            if (IdenSite > r_)//avoid segmenetation fault
                 break;
         }
     }
 
 
-    for (int k=l;k<=m;k++){
+    for (int k=l_;k<=m;k++){
         //Find Max{left} > Min{right}
-        while(count <= r && pt.r[k].val >= pt.l[count].val){
+        while(count <= r_ && pt.r[k].val >= pt.l[count].val){
             //Rule out counted identical P
             if(isSame.val){
                 if(isSame.p == pt.l[count].p){ //included p
@@ -214,8 +214,8 @@ int MERGE_COUNT_INVERSION(Paths pt, int l, int m, int r, MemMergeT temp){
 
 
     //Finish sorting
-    int n1 = m - l + 1;
-    int n2 = r - (m+1) + 1;
+    int n1 = m - l_ + 1;
+    int n2 = r_ - (m+1) + 1;
 
     // Sort Array
     node* Ls_L = temp.Ls_L;
@@ -225,11 +225,11 @@ int MERGE_COUNT_INVERSION(Paths pt, int l, int m, int r, MemMergeT temp){
 
 
     //Copy left part
-    copyNode(Ls_L, pt.l, l, m+1);
-    copyNode(Rs_L, pt.r, l, m+1);
+    copyNode(Ls_L, pt.l, l_, m+1);
+    copyNode(Rs_L, pt.r, l_, m+1);
     //Copy right part
-    copyNode(Ls_R, pt.l, m+1, r+1);
-    copyNode(Rs_R, pt.r, m+1, r+1);
+    copyNode(Ls_R, pt.l, m+1, r_+1);
+    copyNode(Rs_R, pt.r, m+1, r_+1);
 
     //Sentinel 
     Ls_L[n1].val = INT_MAX;
@@ -242,7 +242,7 @@ int MERGE_COUNT_INVERSION(Paths pt, int l, int m, int r, MemMergeT temp){
     int Ri = 0;
     int Rj = 0;
 
-    for (int k=l;k<=r;k++){
+    for (int k=l_;k<=r_;k++){
         //Dispatch Ls
         if(Ls_L[Li].val <= Ls_R[Lj].val){
             pt.l[k] = Ls_L[Li];
@@ -268,8 +268,8 @@ int MERGE_COUNT_INVERSION(Paths pt, int l, int m, int r, MemMergeT temp){
 }
 
 
-int get_intersects(int n, int* p, int* q, int* r){
-    Paths pt = init_path(n,p,q,r);
+int get_intersects(int n, int* p_, int* q_, int* r_){
+    Paths pt = init_path(n,p_,q_,r_);
     sortPaths_P(pt);
 
     MemMergeT temp = allocMemMergeT(pt.len + 1000);
