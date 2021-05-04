@@ -148,7 +148,7 @@ void MERGE_FIRSTofThree(Paths pt, int p, int q, int r, MemMerge3 temp){
 }
 
 void sortPaths_P(Paths pt){
-    MemMerge3 temp = allocMemMerge3(pt.len);
+    MemMerge3 temp = allocMemMerge3(pt.len + 1000);
     MERGE_SORT_FIRSTofThree(pt, 0, pt.len-1, temp);
     kill_MemMerge3(temp);
 }
@@ -272,7 +272,7 @@ int get_intersects(int n, int* p, int* q, int* r){
     Paths pt = init_path(n,p,q,r);
     sortPaths_P(pt);
 
-    MemMergeT temp = allocMemMergeT(pt.len);
+    MemMergeT temp = allocMemMergeT(pt.len + 1000);
     int inv = MERGE_SORT_COUNT_INVERSION(pt, 0, pt.len-1, temp);
     
     kill_MemMergeT(temp);
