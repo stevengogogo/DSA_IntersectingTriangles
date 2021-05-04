@@ -111,7 +111,7 @@ void testData(void){
     //Check Answer
     TEST_CHECK(ans==tp.sol);
     TEST_MSG("EST: %d ; REAL: %d", ans, tp.sol);
-    
+    printf("%s", filepath);
     free(tp.ps);
     free(tp.qs);
     free(tp.rs);

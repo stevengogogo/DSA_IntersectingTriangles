@@ -171,16 +171,18 @@ int MERGE_COUNT_INVERSION(Paths pt, int l, int m, int r, MemMergeT temp){
     int inv = 0;
 
     //Same Item
-    node isSame;
-    isSame.val = 0;
-    isSame.p = INT_MAX;
+    node isSame = {
+        .p=INT_MAX,
+        .val=0
+    };
+
     int Iden = 0; //Identical Ps on the right
     int IdenSite = m+1;
     if(pt.p[m]==pt.p[m+1]){
         isSame.val=1;//Same item true
         isSame.p = pt.p[m]; // value of identical p
         //Number of Same Ps
-        while(IdenSite <= r && pt.p[m] == pt.p[IdenSite] ){
+        while(IdenSite <= r && isSame.p == pt.p[IdenSite] ){
             ++Iden;
             ++IdenSite;
             
@@ -189,15 +191,13 @@ int MERGE_COUNT_INVERSION(Paths pt, int l, int m, int r, MemMergeT temp){
         }
     }
 
-
+    //Count inversions and Overlapped pairs
     for (int k=l;k<=m;k++){
         //Find Max{left} > Min{right}
         while(count <= r && pt.r[k].val >= pt.l[count].val){
             //Rule out counted identical P
-            if(isSame.val){
-                if(isSame.p == pt.l[count].p){ //included p
-                    --Iden;
-                }
+            if(isSame.val && isSame.p == pt.l[count].p){ //included p
+                --Iden;
             }
 
             ++count;
