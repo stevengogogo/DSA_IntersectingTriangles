@@ -17,28 +17,28 @@
 #include <string.h>
 
 typedef struct {
-    int n;
-    int sol;
-    int* ps;
-    int* qs;
-    int* rs;
+    long n;
+    long sol;
+    long* ps;
+    long* qs;
+    long* rs;
 } TriProb;
 
-int* init_arr(int len);
-void kill_arr(int*);
+long* init_arr(long len);
+void kill_arr(long*);
 
 /** Noted that `right` is not included*/
-void copy_arr(int* dst, int* src, int left, int right);
+void copy_arr(long* dst, long* src, long left, long right);
 
 /** Return index of max element*/
-int argmax(int n0, int n1);
+long argmax(long n0, long n1);
 
-void swap(int* a, int *b);
+void swap(long* a, long *b);
 
-int ChooseMax(int a, int b);
+long ChooseMax(long a, long b);
 
 TriProb ParseData(char* filePath);
 
 
-void int2str(int , char *);
+void int2str(long , char *);
 #endif

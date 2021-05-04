@@ -20,21 +20,21 @@
 #define INT_MAX 2147483646
 
 typedef struct {
-  int val;
-  int p;
+  long val;
+  long p;
 } node;
 
 typedef struct {
-  int* p;
+  long* p;
   node* l;
   node* r;
-  int len;
+  long len;
 } Paths;
 
 
 typedef struct {
-  int* L;
-  int* R;
+  long* L;
+  long* R;
   node* a2_L;
   node* a2_R;
   node* a3_L;
@@ -51,16 +51,16 @@ typedef struct {
 /** Create path struct. where 'r' is max(q,r) / 'l' is the other. 
  * @note Arrays are copied and saved in heap. Use @ref kill_path to recycle the memory
 */
-Paths init_path(int len, int p[], int q[], int r[]);
+Paths init_path(long len, long p[], long q[], long r[]);
 /** Free arrays of the Struct @ref Paths */
 void kill_path(Paths);
 
 
 
-MemMerge3 allocMemMerge3(int len);
+MemMerge3 allocMemMerge3(long len);
 void kill_MemMerge3(MemMerge3);
 
-MemMergeT allocMemMergeT(int len);
+MemMergeT allocMemMergeT(long len);
 void kill_MemMergeT(MemMergeT);
 
 /** @brief Merge Sort first array along with 3 arrays. Increasing order
@@ -71,9 +71,9 @@ void kill_MemMergeT(MemMergeT);
  * @param r right start index
  * @note Ref: Chapter 4. CLRS
  */
-void MERGE_SORT_FIRSTofThree(Paths pt, int p, int r, MemMerge3);
+void MERGE_SORT_FIRSTofThree(Paths pt, long p, long r, MemMerge3);
 /** Merge process of @ref MERGE_SORT_FIRSTofThree */
-void MERGE_FIRSTofThree(Paths pt, int p, int q, int r, MemMerge3);
+void MERGE_FIRSTofThree(Paths pt, long p, long q, long r, MemMerge3);
 
 /** Merge sort and total count inversions
  * @param Ps monotonous increasing 
@@ -86,8 +86,8 @@ void MERGE_FIRSTofThree(Paths pt, int p, int q, int r, MemMerge3);
  * 1. https://www.csie.ntu.edu.tw/~sprout/algo2016/ppt_pdf/divide_and_conquer.pdf
  * 2. https://www.geeksforgeeks.org/counting-inversions/
 */
-int MERGE_SORT_COUNT_INVERSION(Paths pt,int l, int r, MemMergeT);
-int MERGE_COUNT_INVERSION(Paths pt, int l, int q, int r, MemMergeT);
+long MERGE_SORT_COUNT_INVERSION(Paths pt,long l, long r, MemMergeT);
+long MERGE_COUNT_INVERSION(Paths pt, long l, long q, long r, MemMergeT);
 
 /** Sort ps in paths. `Paths.l` and `Path.r` will keep paired with `Paths.p`. Refer to @ref Paths*/
 void sortPaths_P(Paths);
@@ -104,11 +104,11 @@ void sortPaths_P(Paths);
  * @param r array of `r` points
  * @return int number of intersects
  */
-int get_intersects(int n, int* p, int* q, int* r);
+long get_intersects(long n, long* p, long* q, long* r);
 
 
 //Basic Operations
 void swapNode(node*, node*);
-void copyNode(node* dst, node* src, int str, int end);
+void copyNode(node* dst, node* src, long str, long end);
 
 #endif

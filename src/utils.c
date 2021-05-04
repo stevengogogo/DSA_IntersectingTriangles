@@ -1,37 +1,37 @@
 #include "utils.h"
 
 
-int* init_arr(int len){
-    int* array = (int*)malloc(len*sizeof(int));
+long*  init_arr(long len){
+    long*  array = (int*)malloc(len*sizeof(int));
     return array;
 }
 
-void kill_arr(int* array){
+void kill_arr(long*  array){
     free(array);
 }
 
-void copy_arr(int* dst, int* src, int left, int right){
-    int j = 0;
-    for(int i=left; i<right;i++){
+void copy_arr(long*  dst, long*  src, long left, long right){
+    long j = 0;
+    for(long i=left; i<right;i++){
         dst[j] = src[i];
         ++j;
     }
 }
 
-int argmax(int n0, int n1){
+long argmax(long n0, long n1){
     if (n1>n0)
         return n1;
     else 
         return n0;
 }
 
-void swap(int* a, int *b){
-    int tmp = *a;
+void swap(long*  a, long *b){
+    long tmp = *a;
     *a = *b;
     *b = tmp;
 }
 
-int ChooseMax(int a, int b){
+long ChooseMax(long a, long b){
     if (a>b)
         return a;
     else 
@@ -52,15 +52,15 @@ TriProb ParseData(char* filePath){
     tp.qs = (int*)malloc(tp.n*sizeof(int));
     tp.rs = (int*)malloc(tp.n*sizeof(int));
 
-    for(int i=0;i<tp.n;i++){
+    for(long i=0;i<tp.n;i++){
         fscanf(fp, "%d", &tp.ps[i]); 
     }
 
-    for(int i=0;i<tp.n;i++){
+    for(long i=0;i<tp.n;i++){
         fscanf(fp, "%d", &tp.qs[i]); 
     }
 
-    for(int i=0;i<tp.n;i++){
+    for(long i=0;i<tp.n;i++){
         fscanf(fp, "%d", &tp.rs[i]); 
     }
 
@@ -73,6 +73,6 @@ TriProb ParseData(char* filePath){
     return tp;
 }
 
-void int2str(int i, char *s) {
+void int2str(long i, char *s) {
   sprintf(s,"%d",i);
 }
