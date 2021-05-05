@@ -153,8 +153,8 @@ void sortPaths_P(Paths pt){
     kill_MemMerge3(temp);
 }
 
-int MERGE_SORT_COUNT_INVERSION(Paths pt, int l_, int r_, MemMergeT temp){
-    int inv=0;
+ulong MERGE_SORT_COUNT_INVERSION(Paths pt, int l_, int r_, MemMergeT temp){
+    ulong inv=0;
     if (l_<r_){
         int m = (l_+r_)/2;
         inv += MERGE_SORT_COUNT_INVERSION(pt, l_, m, temp);
@@ -164,11 +164,11 @@ int MERGE_SORT_COUNT_INVERSION(Paths pt, int l_, int r_, MemMergeT temp){
     return inv;
 }
 
-int MERGE_COUNT_INVERSION(Paths pt, int l_, int m, int r_, MemMergeT temp){
+ulong MERGE_COUNT_INVERSION(Paths pt, int l_, int m, int r_, MemMergeT temp){
 
     //Count inversion
     int count = m+1;
-    int inv = 0;
+    ulong inv = 0;
 
     //Same Item
     node isSame;
@@ -203,12 +203,17 @@ int MERGE_COUNT_INVERSION(Paths pt, int l_, int m, int r_, MemMergeT temp){
             ++count;
         }
 
+
+
+
         //Sum up
-        inv +=  (count - (m + 1));
+
+        inv = inv +  (count - (m + 1));
 
         if(pt.r[k].p == isSame.p && isSame.val==1){
-             inv += Iden;
+             inv = inv + Iden;
         }
+
     }
 
 
@@ -268,13 +273,13 @@ int MERGE_COUNT_INVERSION(Paths pt, int l_, int m, int r_, MemMergeT temp){
 }
 
 
-int get_intersects(int n, int* p_, int* q_, int* r_){
+ulong get_intersects(int n, int* p_, int* q_, int* r_){
     Paths pt = init_path(n,p_,q_,r_);
     sortPaths_P(pt);
 
     MemMergeT temp = allocMemMergeT(pt.len + 1000);
-    int inv = MERGE_SORT_COUNT_INVERSION(pt, 0, pt.len-1, temp);
-    
+    ulong inv = MERGE_SORT_COUNT_INVERSION(pt, 0, pt.len-1, temp);
+
     kill_MemMergeT(temp);
     kill_path(pt);
     return inv;

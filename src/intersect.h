@@ -18,6 +18,7 @@
 #include "utils.h"
 
 #define INT_MAX 2147483647
+typedef unsigned long ulong;
 
 typedef struct {
   int val;
@@ -86,8 +87,8 @@ void MERGE_FIRSTofThree(Paths pt, int p, int q, int r, MemMerge3);
  * 1. https://www.csie.ntu.edu.tw/~sprout/algo2016/ppt_pdf/divide_and_conquer.pdf
  * 2. https://www.geeksforgeeks.org/counting-inversions/
 */
-int MERGE_SORT_COUNT_INVERSION(Paths pt,int l, int r, MemMergeT);
-int MERGE_COUNT_INVERSION(Paths pt, int l, int q, int r, MemMergeT);
+ulong MERGE_SORT_COUNT_INVERSION(Paths pt,int l, int r, MemMergeT);
+ulong MERGE_COUNT_INVERSION(Paths pt, int l, int q, int r, MemMergeT);
 
 /** Sort ps in paths. `Paths.l` and `Path.r` will keep paired with `Paths.p`. Refer to @ref Paths*/
 void sortPaths_P(Paths);
@@ -104,7 +105,7 @@ void sortPaths_P(Paths);
  * @param r array of `r` points
  * @return int number of intersects
  */
-int get_intersects(int n, int* p, int* q, int* r);
+ulong get_intersects(int n, int* p, int* q, int* r);
 
 
 //Basic Operations
