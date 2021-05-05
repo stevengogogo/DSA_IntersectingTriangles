@@ -327,3 +327,10 @@ Ref: https://www.javatpoint.com/return-an-array-in-c
 ## Copy array with `memcpy`
 
 https://stackoverflow.com/questions/2681061/memcpy-what-should-the-value-of-the-size-parameter-be
+
+
+## Draft
+
+- [](img/Draft_1.jpg)
+- [](img/Draft_2.jpg)
+- [](img/Draft_3.jpg)
