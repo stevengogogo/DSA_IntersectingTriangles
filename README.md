@@ -331,6 +331,6 @@ https://stackoverflow.com/questions/2681061/memcpy-what-should-the-value-of-the-
 
 ## Draft
 
-- [](img/Draft_1.jpg)
-- [](img/Draft_2.jpg)
-- [](img/Draft_3.jpg)
+- ![](img/Draft_1.jpg)
+- ![](img/Draft_2.jpg)
+- ![](img/Draft_3.jpg)
