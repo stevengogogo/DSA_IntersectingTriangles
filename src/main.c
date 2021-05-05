@@ -18,14 +18,15 @@ int main()
 {
     
 
-    //Initiate
-  
+    //TEST
+    /*
     TriProb tp = ParseData("test/dataGen/4_3e5.txt");
-    int ans = get_intersects(tp.n, tp.ps, tp.qs, tp.rs);
+    ulong ans = get_intersects(tp.n, tp.ps, tp.qs, tp.rs);
     free(tp.ps); free(tp.qs); free(tp.rs);
-    printf("%d\n",ans);
+    printf("%ld\n",ans);
+    */
   
-   /* Interface
+   // Interface
     generator.init();
     int t = generator.getT();
 
@@ -33,10 +34,10 @@ int main()
         int n, *p, *q, *r;
         generator.getData(&n, &p, &q, &r);
 
-        int ans = get_intersects(n, p, q, r);
-        printf("%d\n", ans);
+        ulong ans = get_intersects(n, p, q, r);
+        printf("%ld\n", ans);
     }
-    */
+
 
     return 0;
 }
