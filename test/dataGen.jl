@@ -49,6 +49,8 @@ end
 
 function CountIntersects(PR::IntersectProblem)
     nCross = 0
+
+    """
     for i in 1:(length(PR.ps)-1)
         t1 = getTriangle(PR, i)
         for j in (i+1):length(PR.ps)
@@ -58,6 +60,7 @@ function CountIntersects(PR::IntersectProblem)
             end
         end
     end
+    """
 
     return nCross
 end
@@ -94,7 +97,7 @@ function main(ARGS)
 
     Nfiles = parse(Int64, ARGS[3])
 
-    file_I = 2
+    file_I = 4
 
     for i in 1:Nfiles
 
